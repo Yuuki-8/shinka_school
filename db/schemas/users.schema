@@ -1,6 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 create_table :users, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    ## user information
+    t.string :name,               null: false, default: ""
+    t.string :name_kana
+    t.string :nickname
+    t.string :phone,              limit: 11
+    t.string :birthday
+    t.string :gender
+	t.string :pref_name
+    t.string :profession
+    t.string :work_place
+    t.string :self_introduction
+
     ## Database authenticatable
     t.string :email,              null: false, default: ""
     t.string :encrypted_password, null: false, default: ""

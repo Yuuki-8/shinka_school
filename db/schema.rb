@@ -13,6 +13,16 @@
 ActiveRecord::Schema.define(version: 0) do
 
   create_table "mentors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "name_kana"
+    t.string "nickname"
+    t.string "phone", limit: 11
+    t.string "birthday"
+    t.string "gender"
+    t.string "pref_name"
+    t.string "profession"
+    t.string "work_place"
+    t.string "self_introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -22,6 +32,16 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "name_kana"
+    t.string "nickname"
+    t.string "phone", limit: 11
+    t.string "birthday"
+    t.string "gender"
+    t.string "pref_name"
+    t.string "profession"
+    t.string "work_place"
+    t.string "self_introduction"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
