@@ -1,15 +1,15 @@
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-/Users/tatsuki/.rbenv/versions/2.7.1/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210709-17958-1hvknuv.rb extconf.rb
+/Users/tatsuki/.rbenv/versions/2.7.2/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210712-41597-1nq8p3b.rb extconf.rb
 creating Makefile
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= clean
+make "DESTDIR=" clean
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\=
+make "DESTDIR="
 compiling cruby.c
 linking shared-object skiptrace/internal/cruby.bundle
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210709-17958-12tad4o/skiptrace/internal
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210712-41597-1m3bntg/skiptrace/internal

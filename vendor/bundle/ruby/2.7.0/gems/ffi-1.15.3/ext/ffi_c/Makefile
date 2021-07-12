@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/tatsuki/.rbenv/versions/2.7.1/include/ruby-2.7.0
+topdir = /Users/tatsuki/.rbenv/versions/2.7.2/include/ruby-2.7.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/tatsuki/.rbenv/versions/2.7.1/include/ruby-2.7.0/x86_64-darwin20
+arch_hdrdir = /Users/tatsuki/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin20
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/tatsuki/.rbenv/versions/2.7.1
+prefix = $(DESTDIR)/Users/tatsuki/.rbenv/versions/2.7.2
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20210709-17958-rd57j0
-sitelibdir = $(DESTDIR)./.gem.20210709-17958-rd57j0
+sitearchdir = $(DESTDIR)./.gem.20210712-41597-4wew8f
+sitelibdir = $(DESTDIR)./.gem.20210712-41597-4wew8f
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -87,10 +87,10 @@ CCDLFLAGS = -fno-common
 CFLAGS   = $(CCDLFLAGS) $(cflags)  -fno-common -pipe  $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/ffi
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/Users/tatsuki/.rbenv/versions/2.7.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/Users/tatsuki/.rbenv/versions/2.7.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) -g -O2  $(ARCH_FLAG)
-ldflags  = -L. -L/Users/tatsuki/.rbenv/versions/2.7.1/lib  -fstack-protector-strong -L/usr/local/lib  -pthread
-dldflags = -L/Users/tatsuki/.rbenv/versions/2.7.1/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
+ldflags  = -L. -L/Users/tatsuki/.rbenv/versions/2.7.2/lib  -fstack-protector-strong -L/usr/local/lib  -pthread
+dldflags = -L/Users/tatsuki/.rbenv/versions/2.7.2/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -dynamic -bundle

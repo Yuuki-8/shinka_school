@@ -1,12 +1,12 @@
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/Users/tatsuki/.rbenv/versions/2.7.1/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210709-17958-n8qlqd.rb extconf.rb
+/Users/tatsuki/.rbenv/versions/2.7.2/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210712-41597-xgdlsk.rb extconf.rb
 creating Makefile
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\= clean
+make "DESTDIR=" clean
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\=
+make "DESTDIR="
 compiling ./libsass/src/ast.cpp
 compiling ./libsass/src/ast2c.cpp
 compiling ./libsass/src/ast_fwd_decl.cpp
@@ -76,5 +76,5 @@ compiling ./libsass/src/values.cpp
 linking shared-object sassc/libsass.bundle
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210709-17958-3twf3q/sassc
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210712-41597-1kispt5/sassc

@@ -1,5 +1,5 @@
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.7/ext/nio4r
-/Users/tatsuki/.rbenv/versions/2.7.1/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.1/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210709-17958-3upto.rb extconf.rb
+/Users/tatsuki/.rbenv/versions/2.7.2/bin/ruby -I /Users/tatsuki/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210712-41597-1f0fy6l.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... no
 checking for linux/io_uring.h... no
@@ -13,10 +13,10 @@ checking for sys/resource.h... yes
 creating Makefile
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.7/ext/nio4r
-make DESTDIR\= clean
+make "DESTDIR=" clean
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.7/ext/nio4r
-make DESTDIR\=
+make "DESTDIR="
 compiling bytebuffer.c
 compiling monitor.c
 monitor.c:185:40: warning: implicit conversion loses integer precision: 'VALUE' (aka 'unsigned long') to 'int' [-Wshorten-64-to-32]
@@ -92,12 +92,12 @@ compiling selector.c
 selector.c:301:26: warning: incompatible function pointer types passing 'VALUE (*)(VALUE *)' (aka 'unsigned long (*)(unsigned long *)') to parameter of type 'VALUE (*)(VALUE)' (aka 'unsigned long (*)(unsigned long)') [-Wincompatible-function-pointer-types]
         return rb_ensure(func, (VALUE)args, NIO_Selector_unlock, self);
                          ^~~~
-/Users/tatsuki/.rbenv/versions/2.7.1/include/ruby-2.7.0/ruby/ruby.h:1990:24: note: passing argument to parameter here
+/Users/tatsuki/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/ruby.h:1990:24: note: passing argument to parameter here
 VALUE rb_ensure(VALUE(*)(VALUE),VALUE,VALUE(*)(VALUE),VALUE);
                        ^
 1 warning generated.
 linking shared-object nio4r_ext.bundle
 
 current directory: /Users/tatsuki/sinka_reservation/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.7/ext/nio4r
-make DESTDIR\= install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20210709-17958-1kklaq0
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20210712-41597-1ihjf5t
