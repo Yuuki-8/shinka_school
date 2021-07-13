@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "profession"
     t.string "work_place"
     t.string "self_introduction"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "profession"
     t.string "work_place"
     t.string "self_introduction"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

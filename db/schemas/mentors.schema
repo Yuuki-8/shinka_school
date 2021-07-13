@@ -12,6 +12,8 @@ create_table :mentors, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=u
     t.string :profession
     t.string :work_place
     t.string :self_introduction
+    t.datetime :created_at
+    t.datetime :updated_at
 
     ## Database authenticatable
     t.string :email,              null: false, default: ""
