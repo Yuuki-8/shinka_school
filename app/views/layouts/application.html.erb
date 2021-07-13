@@ -15,10 +15,8 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Sinka School</a>
+        <a class="navbar-brand" href="#" style="padding: 0 0 0 15px;font-size: 35px">Sinka School</a>
         <% if user_signed_in? %>
-          <strong>Login account : <%= current_user.email %></strong>
-          <strong><%= link_to "Home", root_path %></strong>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -32,8 +30,6 @@
           </ul>
         </div>
         <% elsif mentor_signed_in? %>
-          <strong>Login account : <%= current_mentor.email %></strong>
-          <strong><%= link_to "Home", root_path %></strong>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -43,19 +39,6 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <%= link_to 'Logout', destroy_mentor_session_path, class: "nav-link" %>
-            </li>
-          </ul>
-        </div>
-        <% else %>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <%= link_to 'Login', new_user_session_path, class: "nav-link" %>
             </li>
           </ul>
         </div>
