@@ -14,12 +14,11 @@ class ReservationsController < ApplicationController
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_path }
-        format.js #create.js.erbを探してその中の処理を実行する
+        format.js { render 'reservations/create.js.erb', layout: false}
       end
     else
       respond_to do |format|
-        format.js { render partial: "error" }
-        #登録にエラーが起きたときはerror.js.erbを実行する
+        format.js { render 'reservations/error.js.erb', layout: false }
       end
     end
   end

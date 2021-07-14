@@ -58,7 +58,7 @@ document.addEventListener('turbolinks:load', function() {
                 //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
                 //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
 
-                $('#create_modal').fadeIn();
+                $('#create-modal').fadeIn();
 
             }).fail(function (result) {
                 // 失敗処理
