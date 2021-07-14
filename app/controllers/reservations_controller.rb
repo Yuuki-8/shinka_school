@@ -6,11 +6,16 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @events = Reservation.all
+    @events = nil
+    if current_user?
+      @events = Reservation.where(user_id: current_user.id)
+    else
+      @events = Reservation.where(mentor_id: current_mentor.id)
+    end
   end
 
   def create
-    @reservation = Reservation.new(params_reservation)
+    @reservation = current_user? ? Reservation.new(params_reservation.merge({ 'user_id': current_user.id })) : Reservation.new(params_reservation.merge({ 'mentor_id': current_mentor.id }))
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_path }

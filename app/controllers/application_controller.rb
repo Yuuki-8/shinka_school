@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
     #   new_profile_path
     end
   end
+
+  def current_user?
+    current_user ? true : false
+  end
 end

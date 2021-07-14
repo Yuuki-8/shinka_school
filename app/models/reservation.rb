@@ -6,6 +6,8 @@ class Reservation < ApplicationRecord
 
   validate  :start_end_check
 
+  enum reservation_status: { before: 1, matched: 2 }
+
   #時間の矛盾を防ぐ
   def start_end_check
     if self.start_date.present? && self.end_date.present?

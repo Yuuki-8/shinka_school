@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "title"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.integer "reservation_status", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["mentor_id"], name: "index_reservations_on_mentor_id"
