@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["email", "reset_password_token"], name: "index_mentors_on_email_and_reset_password_token", unique: true
   end
 
+  create_table "reservations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "mentor_id"
+    t.string "title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["mentor_id"], name: "index_reservations_on_mentor_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "name_kana"
@@ -54,4 +66,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["email", "reset_password_token"], name: "index_users_on_email_and_reset_password_token", unique: true
   end
 
+  add_foreign_key "reservations", "mentors"
+  add_foreign_key "reservations", "users"
 end

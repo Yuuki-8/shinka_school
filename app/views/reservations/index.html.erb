@@ -1,0 +1,34 @@
+<div id='calendar'></div>
+<%# ↑このコードさえあればカレンダーが現れてくれます %>
+<% if user_signed_in? %>
+  <%= javascript_pack_tag 'calender/user_reservation' %>
+<% elsif mentor_signed_in? %>
+  <%= javascript_pack_tag 'calender/mentor_reservation' %>
+<% else %>
+  <%= javascript_pack_tag 'calender/user_reservation' %>
+<% end %>
+
+<div class="modal" id="create_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">予定登録</h5>
+        <a href="#" class="btn-close" data-dismiss="modal" aria-label="close"></a>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="response-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a href="#" class="btn-close" data-dismiss="modal" aria-label="close"></a>
+      </div>
+      <div class="response-modal-body">
+      </div>
+    </div>
+  </div>
+</div>

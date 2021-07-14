@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [:index]
-  resources :mentors, only: [:index]
+  resources :users
+  resources :mentors
+  resources :reservations
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

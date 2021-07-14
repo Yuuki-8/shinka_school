@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table :reservations, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.references :user, foreign_key: true
+    t.references :mentor, foreign_key: true
+    t.string :title
+    t.datetime :start_date
+    t.datetime :end_date
+    t.datetime :created_at
+    t.datetime :updated_at
+end
