@@ -1,0 +1,22 @@
+<% provide(:title, "profile") %>
+<h1>your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="profile_box">
+      <div class="profile_center">
+        <h3 class="profile_name"><%= @user.name %></h3>
+      </div>
+      <p><%= @user.self_introduction %></p>
+      <ul>
+        <li class='form-control'>ニックネーム： <%= @user.nickname%></li>
+        <li class='form-control'>電話番号： <%= @user.phone %></li>
+        <li class='form-control'>誕生日： <%= @user.birthday %></li>
+        <li class='form-control'>性別： <%= @user.gender %></li>
+        <li class='form-control'>都道府県： <%= @user.pref.name %></li>
+        <li class='form-control'>職業： <%= @user.job.name %></li>
+        <li class='form-control'>所属： <%= @user.work_place %></li>
+      </ul>
+    </div>
+  </div>
+</div>
