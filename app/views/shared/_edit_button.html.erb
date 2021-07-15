@@ -1,0 +1,5 @@
+<% if resource_name == "User" %>
+  <%= link_to "プロフィール編集", edit_user_registration_path(resource), class: "btn btn-primary js-event-create-btn" %><br />
+<% else %>
+  <%= link_to "プロフィール編集", edit_mentor_registration_path(resource), class: "btn btn-primary js-event-create-btn" %><br />
+<% end %>
