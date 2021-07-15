@@ -1,38 +1,75 @@
 //インストールしたファイルたちを呼び出します。
-import { Calendar} from '@fullcalendar/core';
+import { Calendar } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid';
 import googleCalendarApi from '@fullcalendar/google-calendar';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function () {
     var calendarEl = document.getElementById('calendar');
 
-    //カレンダーの中身を設定(月表示とか、クリックアクション起こしたいとか、googleCalendar使うととか)
     var calendar = new Calendar(calendarEl, {
-        plugins: [ timeGridPlugin, monthGridPlugin, interactionPlugin, googleCalendarApi ],
-
-
-        //細かな表示設定
+        plugins: [ timeGridPlugin, monthGridPlugin, interactionPlugin, googleCalendarApi, listPlugin ],
         locale: 'ja',
         timeZone: 'Asia/Tokyo',
         firstDay: 1,
         headerToolbar: {
+            left: "dayGridMonth timeGridWeek timeGridDay listMonth",
             start: '',
             center: 'title',
-            end: 'today prev,next'
+            right: 'today prev,next'
         },
         initialView: 'timeGridWeek',
         expandRows: true,
         stickyHeaderDates: true,
         buttonText: {
-            today: '今日'
+            today: '今日',
+            month: '月',
+            list: 'リスト',
+            week: '週',
+            day: '日'
+        },
+        views: {
+            dayGridMonth: {
+                titleFormat: { year: 'numeric', month: 'numeric' },
+            },
+            listMonth: {
+                titleFormat: { year: 'numeric', month: 'numeric' },
+                listDayFormat: { month: 'numeric', day: 'numeric', weekday: 'narrow' },
+                listDaySideFormat: false
+            }
         },
         allDayText: '終日',
         height: "auto",
         events: '/reservations.json',
-
+        customButtons: {
+            nextWithScroll: {
+                icon : 'fa-chevron-right',
+                click: function(e) {
+                    calendar.next();
+                    $(window).scrollTop(calendarEl_posT);
+                }
+            },
+            prevWithScroll: {
+                icon : 'fa-chevron-left',
+                click: function(e) {
+                    calendar.prev();
+                    $(window).scrollTop(calendarEl_posT);
+                }
+            }
+        },
+        footerToolbar: {
+            right: "prev,next"
+        },
+        navLinks: true, // can click day/week names to navigate views
+        businessHours: {
+            startTime: '09:00',
+            endTime: '21:00'
+        },
+        editable: true,
+        selectable: true,
         dateClick: function(info){
             //クリックした日付の情報を取得
             const year  = info.date.getFullYear();
