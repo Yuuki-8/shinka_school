@@ -15,7 +15,11 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/" style="padding: 0 0 0 15px;font-size: 35px">Sinka School</a>
+        <% if user_signed_in? || mentor_signed_in? %>
+          <a class="navbar-brand" href="/reservations" style="padding: 0 0 0 15px;font-size: 35px">Sinka School</a>
+        <% else %>
+          <a class="navbar-brand" href="/" style="padding: 0 0 0 15px;font-size: 35px">Sinka School</a>
+        <% end %>
         <% if user_signed_in? %>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav4">
           <ul class="navbar-nav">
