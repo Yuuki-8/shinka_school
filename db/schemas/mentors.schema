@@ -2,16 +2,16 @@
 # vi: set ft=ruby :
 create_table :mentors, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     ## mentor information
+    t.integer :job_id
+    t.integer :pref_id
     t.string :name,               null: false, default: ""
     t.string :name_kana
     t.string :nickname
     t.string :phone,              limit: 11
-    t.string :birthday
-    t.string :gender
-    t.string :pref_name
-    t.string :profession
+    t.date :birthday
+    t.integer :gender
     t.string :work_place
-    t.string :self_introduction
+    t.text :self_introduction
     t.datetime :created_at
     t.datetime :updated_at
 

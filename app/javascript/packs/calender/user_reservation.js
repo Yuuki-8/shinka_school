@@ -1,8 +1,9 @@
 //インストールしたファイルたちを呼び出します。
 import { Calendar} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
-import monthGridPlugin from '@fullcalendar/daygrid'
-import googleCalendarApi from '@fullcalendar/google-calendar'
+import monthGridPlugin from '@fullcalendar/daygrid';
+import googleCalendarApi from '@fullcalendar/google-calendar';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
 document.addEventListener('turbolinks:load', function() {
@@ -10,7 +11,7 @@ document.addEventListener('turbolinks:load', function() {
 
     //カレンダーの中身を設定(月表示とか、クリックアクション起こしたいとか、googleCalendar使うととか)
     var calendar = new Calendar(calendarEl, {
-        plugins: [ monthGridPlugin, interactionPlugin, googleCalendarApi ],
+        plugins: [ timeGridPlugin, monthGridPlugin, interactionPlugin, googleCalendarApi ],
 
 
         //細かな表示設定
@@ -22,6 +23,7 @@ document.addEventListener('turbolinks:load', function() {
             center: 'title',
             end: 'today prev,next'
         },
+        initialView: 'timeGridWeek',
         expandRows: true,
         stickyHeaderDates: true,
         buttonText: {
@@ -35,7 +37,7 @@ document.addEventListener('turbolinks:load', function() {
             //クリックした日付の情報を取得
             const year  = info.date.getFullYear();
             const month = (info.date.getMonth() + 1);
-            const day   = info.date.getDate();
+            const day = info.date.getDate();
 
             //ajaxでevents/newを着火させ、htmlを受け取ります
             $.ajax({

@@ -3,3 +3,5 @@
 require 'users.schema'
 require 'mentors.schema'
 require 'reservations.schema'
+require 'jobs.schema'
+require 'prefs.schema'
