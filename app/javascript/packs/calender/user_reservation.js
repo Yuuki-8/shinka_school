@@ -75,6 +75,9 @@ document.addEventListener('turbolinks:load', function () {
             const year  = info.date.getFullYear();
             const month = (info.date.getMonth() + 1);
             const day = info.date.getDate();
+            const startHour = (( '00' + (info.date.getHours() - 9)).slice( -2 ));
+            const endHour = (( '00' + (info.date.getHours() - 8)).slice( -2 ));
+            const min = ( '00' + info.date.getMinutes()).slice( -2 );
 
             //ajaxでevents/newを着火させ、htmlを受け取ります
             $.ajax({
@@ -86,13 +89,17 @@ document.addEventListener('turbolinks:load', function () {
                 $('.modal-body').html(res);
 
                 //フォームの年、月、日を自動入力
-                $('#event_start_1i').val(year);
-                $('#event_start_2i').val(month);
-                $('#event_start_3i').val(day);
+                $('#reservation_start_date_1i').val(year);
+                $('#reservation_start_date_2i').val(month);
+                $('#reservation_start_date_3i').val(day);
+                $('#reservation_start_date_4i').val(startHour);
+                $('#reservation_start_date_5i').val(min);
 
-                $('#event_end_1i').val(year);
-                $('#event_end_2i').val(month);
-                $('#event_end_3i').val(day);
+                $('#reservation_end_date_1i').val(year);
+                $('#reservation_end_date_2i').val(month);
+                $('#reservation_end_date_3i').val(day);
+                $('#reservation_end_date_4i').val(endHour);
+                $('#reservation_end_date_5i').val(min);
 
                 //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
                 //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
