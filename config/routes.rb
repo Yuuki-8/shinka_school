@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/show'
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
   devise_for :mentors, controllers: {
     sessions: 'mentors/sessions',
     passwords: 'mentors/passwords',
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
-
+  resources :admins
   resources :users do
     get :profile, on: :member
   end

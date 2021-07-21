@@ -9,8 +9,10 @@ class ReservationsController < ApplicationController
     @events = nil
     if current_user?
       @events = Reservation.where(user_id: current_user.id)
-    else
+    elsif current_mentor?
       @events = Reservation.where(mentor_id: current_mentor.id)
+    elsif current_admin?
+      @events = Reservation.where(admin_id: current_admin.id)
     end
   end
 
