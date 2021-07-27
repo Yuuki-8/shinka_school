@@ -1,6 +1,10 @@
 class AttendancesController < ApplicationController
   def index
-    @attendance = current_admin.attendances.today_attendance_scope
+    @attendance = current_admin.attendances.today_attendance_scope.first
+    @attendances = []
+    @attendances = current_admin.attendances.week_attendances_scope.map do |attendance|
+      [attendance.start_time.strftime('%Y/%m/%d'), attendance.working_time]
+    end
   end
 
   def show

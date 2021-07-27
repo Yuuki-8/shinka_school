@@ -1,4 +1,4 @@
-<% if resource.working_time %>
+<% if resource&.working_time %>
   <div class="jumbotron">
     <div class='index-content text-center'>
       <h1 class='home-index'>お疲れ様でした！</h1>
@@ -10,7 +10,7 @@
 <% else %>
   <div class="jumbotron">
     <div class='index-content text-center'>
-      <h1 class='home-index'>お疲れ様でした！</h1>
+      <h1 class='home-index'>今日も1日がんばりましょう！</h1>
       <h2 class='home-index'>勤務開始時刻：<%= resource.start_time.strftime('%Y/%m/%d %H:%M') %></h2>
 
       <div class='index-btn d-flex justify-content-around'>

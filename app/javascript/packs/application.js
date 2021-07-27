@@ -1,5 +1,6 @@
 import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
+import "chartkick/chart.js";
 import '../stylesheets/application';
 import '../stylesheets/home';
 import '../stylesheets/calender';
