@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["email", "reset_password_token"], name: "index_admins_on_email_and_reset_password_token", unique: true
   end
 
+  create_table "attendances", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "admin_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.float "working_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["admin_id"], name: "index_attendances_on_admin_id"
+  end
+
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
@@ -91,6 +101,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["email", "reset_password_token"], name: "index_users_on_email_and_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "admins"
   add_foreign_key "reservations", "mentors"
   add_foreign_key "reservations", "users"
 end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       reservations_path
     elsif current_admin
       flash[:notice] = "adminとしてログインに成功しました"
-      reservations_path
+      attendances_path
     end
   end
 

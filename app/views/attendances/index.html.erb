@@ -1,0 +1,5 @@
+<% if @attendance %>
+  <%= render "attendances/edit", resource: @attendance %>
+<% else %>
+  <%= render "attendances/new", resource: @attendance %>
+<% end %>

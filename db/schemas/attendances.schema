@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table :attendances, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.references :admin, foreign_key: true
+    t.datetime :start_time
+    t.datetime :end_time
+    t.float :working_time
+    t.datetime :created_at
+    t.datetime :updated_at
+end

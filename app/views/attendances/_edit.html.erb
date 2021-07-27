@@ -1,0 +1,21 @@
+<% if resource.working_time %>
+  <div class="jumbotron">
+    <div class='index-content text-center'>
+      <h1 class='home-index'>お疲れ様でした！</h1>
+      <h2 class='home-index'>勤務開始時刻：<%= resource.start_time.strftime('%Y/%m/%d %H:%M') %></h2>
+      <h2 class='home-index'>勤務終了時刻：<%= resource.end_time.strftime('%Y/%m/%d %H:%M') %></h2>
+      <h2 class='home-index'>勤務時間：<%= resource.working_time %>時間</h2>
+    </div>
+  </div>
+<% else %>
+  <div class="jumbotron">
+    <div class='index-content text-center'>
+      <h1 class='home-index'>お疲れ様でした！</h1>
+      <h2 class='home-index'>勤務開始時刻：<%= resource.start_time.strftime('%Y/%m/%d %H:%M') %></h2>
+
+      <div class='index-btn d-flex justify-content-around'>
+        <%= link_to '稼働終了', attendance_path(resource), method: :put, class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
+  </div>
+<% end %>
