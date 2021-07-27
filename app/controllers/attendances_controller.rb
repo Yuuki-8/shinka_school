@@ -27,7 +27,7 @@ class AttendancesController < ApplicationController
   end
 
   def update
-    @attendance = current_admin.attendances.today_attendance_scope
+    @attendance = current_admin.attendances.today_attendance_scope.first
     Attendance.transaction do
       @attendance.update!(end_time: Time.zone.now)
       render action: :index
