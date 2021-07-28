@@ -12,6 +12,7 @@ create_table :users, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf
     t.integer :gender
     t.string :work_place
     t.text :self_introduction
+    t.string :image
     t.datetime :created_at
     t.datetime :updated_at
 

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "gender"
     t.string "work_place"
     t.text "self_introduction"
+    t.string "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "email", default: "", null: false
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "gender"
     t.string "work_place"
     t.text "self_introduction"
+    t.string "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "email", default: "", null: false

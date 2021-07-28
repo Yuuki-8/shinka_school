@@ -24,7 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'ridgepole'
-gem "chartkick"
+gem 'chartkick'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
