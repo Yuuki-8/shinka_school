@@ -9,6 +9,8 @@ class User < ApplicationRecord
   belongs_to :pref, optional: true
   has_many :reservations
   has_many :mentors, through: :reservations
+  has_many :user_events
+  has_many :events, through: :user_events
 
   enum gender: %i( male female )
 end

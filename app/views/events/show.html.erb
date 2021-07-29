@@ -1,0 +1,24 @@
+<h1>注文情報の表示</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>イベント名</th>
+      <th>開催場所</th>
+      <th>イベント開始時間</th>
+      <th>イベント終了時間</th>
+      <th>募集締切日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @event.title %></td>
+      <td><%= @event.place %></td>
+      <td><%= @event.start_date.strftime('%Y/%m/%d %H:%M') %></td>
+      <td><%= @event.end_date.strftime('%Y/%m/%d %H:%M') %></td>
+      <td><%= @event.deadline_date.strftime('%Y/%m/%d %H:%M') %></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<span>　　</span><%= link_to '編集', edit_event_path(@event), class: 'btn btn-success btn-lg' %><span>　　　</span><%= link_to '戻る', events_path, class: 'btn btn-success btn-lg' %>

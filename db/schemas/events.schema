@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table :events, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.references :user, foreign_key: true
+    t.string :title
+    t.string :place
+    t.datetime :start_date
+    t.datetime :end_date
+    t.datetime :deadline_date
+    t.datetime :created_at
+    t.datetime :updated_at
+end
