@@ -16,7 +16,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params.merge({ 'user_id': current_user.id }))
+    @event = Event.new(event_params)
+    @event.user_events.build(user: current_user)
     if @event.save
       flash[:success] = "イベントを新規作成しました"
       redirect_to controller: :events, action: :index

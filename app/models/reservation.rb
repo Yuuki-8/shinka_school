@@ -18,7 +18,7 @@ class Reservation < ApplicationRecord
   end
 
   def set_status
-    if self.user_id
+    if self.user_id && self.mentor_id
       self.reservation_status = 1
     else
       self.reservation_status = 0

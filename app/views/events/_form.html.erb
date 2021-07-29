@@ -27,7 +27,6 @@
       <%= f.label :deadline_date,"参加者募集締切日", {class:'control-label'}%>
       <%= f.datetime_select :deadline_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
     </div>
-    <% f.hidden_field :id, value: "#{@event.id}"%>
 
     <%= f.submit "Save", class: "btn btn-success btn-lg m-5" %><span>　　　</span><%= link_to '戻る', events_path, class: 'btn btn-success btn-lg' %>
   <% end %>

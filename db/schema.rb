@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "title"
     t.string "place"
     t.datetime "start_date"
@@ -43,7 +42,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "deadline_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -125,7 +123,6 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_foreign_key "attendances", "admins"
-  add_foreign_key "events", "users"
   add_foreign_key "reservations", "mentors"
   add_foreign_key "reservations", "users"
   add_foreign_key "user_events", "events"

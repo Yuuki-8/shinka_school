@@ -6,6 +6,7 @@ class Event < ApplicationRecord
 
   validate  :start_end_check
 
+
   #時間の矛盾を防ぐ
   def start_end_check
     if self.start_date.present? && self.end_date.present?

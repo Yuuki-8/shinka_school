@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   def index
     @events = nil
     if current_user?
-      @events = Reservation.where(user_id: current_user.id).to_a + Event.where(user_id: current_user.id).to_a
+      @events = Reservation.where(user_id: current_user.id).to_a + current_user.events.to_a
     elsif current_mentor?
       @events = Reservation.where(mentor_id: current_mentor.id)
     elsif current_admin?
@@ -31,6 +31,6 @@ class ReservationsController < ApplicationController
   end
 
   def params_reservation
-      params.require(:reservation).permit(:title, :reservation_status, :start_date, :end_date)
+      params.require(:reservation).permit(:user_id, :mentor_id, :title, :reservation_status, :start_date, :end_date)
   end
 end

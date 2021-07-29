@@ -16,6 +16,11 @@
       <%= f.label :end_date,"終了時刻", {class:'control-label'}%>
       <%= f.datetime_select :end_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
     </div>
+    <% if current_user %>
+      <%= f.hidden_field :user_id, value: current_user.id%>
+    <% elsif current_mentor %>
+      <%= f.hidden_field :mentor_id, value: current_mentor.id%>
+    <% end %>
       <%# 自動入力をするためにはdatetime_selectにしておく必要があります %>
 
     <%= f.submit "登録",   class: "btn btn-primary js-event-create-btn" %>
