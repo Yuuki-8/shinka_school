@@ -37,9 +37,22 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find_by(params[:id])
+    @event = Event.find(params[:id])
     @event.delete
     redirect_to controller: :events, action: :index
+  end
+
+  def join_to_event
+    event = Event.find(params[:id])
+    user_event = event.user_events.build(user: current_user)
+    user_event.save
+    redirect_to controller: :events, action: :show
+  end
+
+  def undo_from_event
+    user_event = UserEvent.find_by!(event_id: params[:id], user: current_user)
+    user_event.delete
+    redirect_to controller: :events, action: :show
   end
 
   private

@@ -28,6 +28,6 @@
       <%= f.datetime_select :deadline_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
     </div>
 
-    <%= f.submit "Save", class: "btn btn-success btn-lg m-5" %><span>　　　</span><%= link_to '戻る', events_path, class: 'btn btn-success btn-lg' %>
+    <%= f.submit "Save", class: "btn btn-success btn-lg m-5" %><span>　　　</span><%= link_to '一覧', events_path, class: 'btn btn-success btn-lg' %>
   <% end %>
 </div>

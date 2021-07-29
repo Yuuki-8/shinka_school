@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   end
   resources :reservations
   resources :attendances
-  resources :events
+  resources :events do
+    post :join_to_event, on: :member
+    delete :undo_from_event, on: :member
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
