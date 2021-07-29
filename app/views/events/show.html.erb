@@ -1,6 +1,6 @@
-<h1>注文情報の表示</h1>
+<h1>イベント詳細</h1>
 <br>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>イベント名</th>
@@ -21,4 +21,4 @@
   </tbody>
 </table>
 <br>
-<span>　　</span><%= link_to '編集', edit_event_path(@event), class: 'btn btn-success btn-lg' %><span>　　　</span><%= link_to '戻る', events_path, class: 'btn btn-success btn-lg' %>
+<span>　　</span><%= link_to '編集', edit_event_path(@event), class: 'btn btn-success btn-md' %><span>　　　</span><%= link_to '戻る', events_path, class: 'btn btn-success btn-md' %>
