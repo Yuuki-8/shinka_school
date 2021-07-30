@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = current_user? ? Reservation.new(params_reservation.merge({ 'user_id': current_user.id })) : Reservation.new(params_reservation.merge({ 'mentor_id': current_mentor.id }))
+    @reservation = Reservation.new(params_reservation)
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_path }
