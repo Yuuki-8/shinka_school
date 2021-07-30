@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function () {
         },
         allDayText: '終日',
         height: "auto",
-        events: '/reservations.json',
+        events: '/calendars.json',
         customButtons: {
             nextWithScroll: {
                 icon : 'fa-chevron-right',
@@ -82,24 +82,24 @@ document.addEventListener('turbolinks:load', function () {
             //ajaxでevents/newを着火させ、htmlを受け取ります
             $.ajax({
                 type: 'GET',
-                url:  '/reservations/new',
+                url:  '/calendars/new',
             }).done(function (res) {
                 // 成功処理
                 // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
                 $('.modal-body').html(res);
 
                 //フォームの年、月、日を自動入力
-                $('#reservation_start_date_1i').val(year);
-                $('#reservation_start_date_2i').val(month);
-                $('#reservation_start_date_3i').val(day);
-                $('#reservation_start_date_4i').val(startHour);
-                $('#reservation_start_date_5i').val(min);
+                $('#calendar_start_date_1i').val(year);
+                $('#calendar_start_date_2i').val(month);
+                $('#calendar_start_date_3i').val(day);
+                $('#calendar_start_date_4i').val(startHour);
+                $('#calendar_start_date_5i').val(min);
 
-                $('#reservation_end_date_1i').val(year);
-                $('#reservation_end_date_2i').val(month);
-                $('#reservation_end_date_3i').val(day);
-                $('#reservation_end_date_4i').val(endHour);
-                $('#reservation_end_date_5i').val(min);
+                $('#calendar_end_date_1i').val(year);
+                $('#calendar_end_date_2i').val(month);
+                $('#calendar_end_date_3i').val(day);
+                $('#calendar_end_date_4i').val(endHour);
+                $('#calendar_end_date_5i').val(min);
 
                 //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
                 //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
@@ -112,7 +112,19 @@ document.addEventListener('turbolinks:load', function () {
             });
         },
         eventClick: function(info){
-            //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
+            const instanceId = info.event._def.publicId
+            const className = info.event.extendedProps.class_name
+            $.ajax({
+                type: 'GET',
+                url: `/calendars/${instanceId}`,
+                data: { class_name: className},
+            }).done(function (res) {
+                $('.modal-body').html(res);
+                $('#edit-modal').fadeIn();
+            }).fail(function (result) {
+                // 失敗処理
+                alert("failed");
+            });
         },
         eventClassNames: function(arg){
             //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)

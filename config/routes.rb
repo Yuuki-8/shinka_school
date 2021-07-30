@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get :profile, on: :member
   end
   resources :reservations
+  resources :calendars
   resources :attendances
   resources :events do
     post :join_to_event, on: :member
