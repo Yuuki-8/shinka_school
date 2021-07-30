@@ -17,6 +17,11 @@ RSpec.describe User, type: :model do
       expect(@user.valid?).to(eq(false))
     end
 
+    it 'name_kanaが空だと @user.valid? が falseになること' do
+      @user.name_kana = ''
+      expect(@user.valid?).to(eq(false))
+    end
+
     it 'emailが空だと @user.valid? が falseになること' do
       @user.email = ''
       expect(@user.valid?).to(eq(false))

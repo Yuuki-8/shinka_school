@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :events, through: :user_events
 
   validates :name, presence: true
-  validates :email, presence: true
+  validates :name_kana, presence: true
 
   enum gender: %i( male female )
 end

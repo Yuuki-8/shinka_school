@@ -10,5 +10,8 @@ class Mentor < ApplicationRecord
   has_many :reservations
   has_many :users, through: :reservations
 
+  validates :name, presence: true
+  validates :name_kana, presence: true
+
   enum gender: %i( male female )
 end
