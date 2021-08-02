@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_events.build(user: current_user)
     if @event.save
-      flash[:success] = "イベントを新規作成しました"
+      flash[:notice] = "イベントを新規作成しました"
       redirect_to controller: :events, action: :index
     else
       redirect_to controller: :events, action: :new
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find_by(params[:id])
     if @event.update(event_params)
-      flash[:success] = "イベントを更新しました"
+      flash[:notice] = "イベントを更新しました"
       redirect_to controller: :events, action: :index
     else
       redirect_to controller: :events, action: :edit, id: @event.id
