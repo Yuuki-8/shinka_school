@@ -70,6 +70,13 @@ document.addEventListener('turbolinks:load', function () {
         },
         editable: true,
         selectable: true,
+        eventSources: [
+            {
+                googleCalendarApiKey: 'AIzaSyDK9wkF7x-CO1NcyEKBM5O2PEkOkOetWjk',
+                googleCalendarId: 'japanese__ja@holiday.calendar.google.com',
+                display: 'background',
+            },
+        ],
         dateClick: function(info){
             //クリックした日付の情報を取得
             const year  = info.date.getFullYear();
