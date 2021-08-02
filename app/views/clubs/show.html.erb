@@ -25,6 +25,21 @@
   </tbody>
 </table>
 <br>
+<table class="table">
+  <thead style="background-color:#ccc;">
+    <tr align="center" valign="middle">
+      <th>参加者一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @club.users.each do |user| %>
+      <tr align="center" valign="middle">
+        <td><%= user.name %></td>
+    <% end %>
+  </tbody>
+</table>
+<br>
 <span>　　</span>
 <% if @club.users.include?(current_user) %>
   <%= link_to '編集', edit_club_path(@club), class: 'btn btn-success btn-md' %><span>　　　</span>
