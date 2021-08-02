@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :mentors, through: :reservations
   has_many :user_events
   has_many :events, through: :user_events
+  has_many :user_clubs
+  has_many :clubs, through: :user_clubs
 
   validates :name, presence: true
   validates :name_kana, presence: true

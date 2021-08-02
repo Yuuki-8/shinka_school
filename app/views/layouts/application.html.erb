@@ -31,8 +31,10 @@
       </nav>
 
       <div class="content-wrapper">
-        <p id="notice"><%= notice %></p>
-        <p id="alert"><%= alert %></p>
+        <% if notice || alert %>
+          <p id="notice"><%= notice %></p>
+          <p id="alert"><%= alert %></p>
+        <% end %>
         <%= yield %>
       </div>
 

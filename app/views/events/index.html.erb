@@ -1,7 +1,7 @@
 <h1>イベント一覧</h1>
 <table class="table">
   <thead style="background-color:#ccc;">
-    <tr>
+    <tr align="center" valign="middle">
       <th>イベント名</th>
       <th>開催場所</th>
       <th>イベント開始時間</th>
@@ -14,7 +14,7 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <tr>
+      <tr align="center" valign="middle">
         <td><%= event.title %></td>
         <td><%= event.place %></td>
         <td><%= event.start_date.strftime('%Y/%m/%d %H:%M') %></td>

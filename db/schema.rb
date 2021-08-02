@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["admin_id"], name: "index_attendances_on_admin_id"
   end
 
+  create_table "clubs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "title"
     t.string "place"
@@ -91,6 +99,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "user_clubs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "club_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["club_id"], name: "index_user_clubs_on_club_id"
+    t.index ["user_id"], name: "index_user_clubs_on_user_id"
+  end
+
   create_table "user_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
@@ -125,6 +142,8 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "attendances", "admins"
   add_foreign_key "reservations", "mentors"
   add_foreign_key "reservations", "users"
+  add_foreign_key "user_clubs", "clubs"
+  add_foreign_key "user_clubs", "users"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end
