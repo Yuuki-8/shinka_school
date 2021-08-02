@@ -1,7 +1,7 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "mentors/shared/error_messages", resource: resource %>
+  <%= render "/shared/error_messages", resource: resource %>
 
   <div class="container">
     <div class="card-container">
@@ -66,4 +66,4 @@
   </div>
 <% end %>
 
-<%= render "mentors/shared/links" %>
+<%= render "/shared/links" %>

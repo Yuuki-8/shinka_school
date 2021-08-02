@@ -95,6 +95,12 @@ ja:
     sessions:
       new:
         sign_in: "ログイン"
+      mentor:
+        signed_out: "ログアウトしました"
+      user:
+        signed_out: "ログアウトしました"
+      admin:
+        signed_out: "ログアウトしました"
     shared:
       links:
         back: "戻る"
@@ -107,3 +113,10 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+    failure:
+      user:
+        not_found_in_database: "ログインに失敗しました。該当のユーザーが見つかりません"
+      mentor:
+        not_found_in_database: "ログインに失敗しました。該当のユーザーが見つかりません"
+      admin:
+        not_found_in_database: "ログインに失敗しました。該当のユーザーが見つかりません"
