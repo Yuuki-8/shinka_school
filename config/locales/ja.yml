@@ -10,7 +10,7 @@ ja:
       pref: '都道府県'
       reservation: '予約'
       user: 'ユーザー'
-    attribuites:
+    attributes:
       admin:
         name: "名前"
         email: 'メールアドレス'
