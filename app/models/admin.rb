@@ -5,4 +5,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :attendances
+
+  validates :name, presence: true
 end

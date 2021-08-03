@@ -1,3 +1,6 @@
+require "validators/email_format_validator"
+require "validators/name_kana_validator"
+require "validators/phone_no_validator"
 class Mentor < ApplicationRecord
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
@@ -10,8 +13,10 @@ class Mentor < ApplicationRecord
   has_many :reservations
   has_many :users, through: :reservations
 
-  validates :name, presence: true
-  validates :name_kana, presence: true
+  validates :name, presence: true, length: { maximum: 100 }
+  validates :name_kana, presence: true, format: { with: NameKanaValidator::CODE_REGEX, multiline: true }, length: { maximum: 100 }
+  validates :phone, presence: true, format: { with: PhoneNoValidator::CODE_REGEX, multiline: true }, length: { maximum: 15 }
+  validates :email, format: { with: EmailFormatValidator::CODE_REGEX }, allow_blank: true
 
   enum gender: %i( male female )
 end

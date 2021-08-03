@@ -67,3 +67,7 @@ ja:
       gender:
         male: '男性'
         female: '女性'
+
+  errors:
+    messages:
+      not_saved: "不適切な値があります。確認してください。"

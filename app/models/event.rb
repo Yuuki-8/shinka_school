@@ -5,12 +5,24 @@ class Event < ApplicationRecord
   default_scope -> { order(start_date: :asc) }
 
   validate  :start_end_check
+  validate  :deadline_start_check
+  validates :title, presence: true
+  validates :place, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :deadline_date, presence: true
 
 
   #時間の矛盾を防ぐ
   def start_end_check
     if self.start_date.present? && self.end_date.present?
       errors.add(:end_date, "が開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
+    end
+  end
+
+  def deadline_start_check
+    if self.deadline_date.present? && self.start_date.present?
+      errors.add(:deadline_date, "が開始時刻を上回っています。正しく記入してください。") if self.start_date < self.deadline_date
     end
   end
 
