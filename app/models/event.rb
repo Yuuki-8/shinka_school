@@ -13,4 +13,22 @@ class Event < ApplicationRecord
       errors.add(:end_date, "が開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
     end
   end
+
+  def notification_to_slack
+    notifier = Slack::Notifier.new(
+      ENV['SLACK_WEBHOOK_URL'],
+      channel: "##{ENV['SLACK_CHANNEL']}",
+      username: 'イベント管理者'
+    )
+    notifier.ping "イベント名：#{self.title}は参加者の募集を締め切りました"
+  end
+
+  def notification_to_slack_before_one_hour
+    notifier = Slack::Notifier.new(
+      ENV['SLACK_WEBHOOK_URL'],
+      channel: "##{ENV['SLACK_CHANNEL']}",
+      username: 'イベント管理者'
+    )
+    notifier.ping "イベント名：#{self.title}は参加者の募集締め切り1時間前です"
+  end
 end

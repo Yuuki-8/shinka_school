@@ -25,3 +25,8 @@ set :environment, :development
 every 1.day, at: '0:00 am' do
   rake "attendance:end_time_add"
 end
+
+every 1.minute do
+  rake "notification:event_just_to_slack"
+  rake "notification:event_before_one_hour_to_slack"
+end

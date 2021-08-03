@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "deadline_date"
+    t.boolean "is_before_one_hour_notification", default: false
+    t.boolean "is_just_notification", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
