@@ -14,13 +14,18 @@
     </div>
       <br>
     <div class="form-group">
-      <%= f.label :start_date,"開始時刻", {class:'control-label'}%>
+      <%= f.label :start_date, {class:'control-label'}%>
       <%= f.datetime_select :start_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
     </div>
       <br>
     <div class="form-group">
-      <%= f.label :end_date,"終了時刻", {class:'control-label'}%>
+      <%= f.label :end_date, {class:'control-label'}%>
       <%= f.datetime_select :end_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
+    </div>
+      <br>
+    <div class="form-group">
+      <%= f.label :deadline_date, {class:'control-label'}%>
+      <%= f.datetime_select :deadline_date, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
     </div>
     <%= f.hidden_field :id, value: @reservation.id%>
       <%# 自動入力をするためにはdatetime_selectにしておく必要があります %>
