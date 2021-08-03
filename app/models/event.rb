@@ -20,7 +20,7 @@ class Event < ApplicationRecord
       channel: "##{ENV['SLACK_CHANNEL']}",
       username: 'イベント管理者'
     )
-    notifier.ping "イベント名：#{self.title}は参加者の募集を締め切りました"
+    notifier.ping "イベント名：#{self.title}は参加者の募集を締め切りました。http://localhost:3000/events/#{self.id}"
   end
 
   def notification_to_slack_before_one_hour
@@ -29,6 +29,6 @@ class Event < ApplicationRecord
       channel: "##{ENV['SLACK_CHANNEL']}",
       username: 'イベント管理者'
     )
-    notifier.ping "イベント名：#{self.title}は参加者の募集締め切り1時間前です"
+    notifier.ping "イベント名：#{self.title}は参加者の募集締め切り1時間前です。http://localhost:3000/events/#{self.id}"
   end
 end

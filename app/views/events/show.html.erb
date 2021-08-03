@@ -20,10 +20,12 @@
       <td><%= @event.end_date.strftime('%Y/%m/%d %H:%M') %></td>
       <td><%= @event.deadline_date.strftime('%Y/%m/%d %H:%M') %></td>
       <td><%= @event.users.count %></td>
-      <% if @event.user_events.where(user: current_user).present? %>
-        <td><%= link_to '参加取消', undo_from_event_event_path(@event), method: :delete, class: 'btn btn-danger btn-sm' %></td>
-      <% else %>
-        <td><%= link_to '参加する', join_to_event_event_path(@event), method: :post, class: 'btn btn-success btn-sm' %></td>
+      <% if @event.deadline_date >= Time.zone.now %>
+        <% if @event.user_events.where(user: current_user).present? %>
+          <td><%= link_to '参加取消', undo_from_event_event_path(@event), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+        <% else %>
+          <td><%= link_to '参加する', join_to_event_event_path(@event), method: :post, class: 'btn btn-success btn-sm' %></td>
+        <% end %>
       <% end %>
     </tr>
   </tbody>
