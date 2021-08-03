@@ -21,9 +21,9 @@
         <td><%= event.end_date.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= event.deadline_date.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= event.users.count %></td>
-        <td><%= link_to '詳細', event_path(event), action: :get, class: 'btn btn-success btn-sm' %></td>
-        <td><%= link_to '編集', edit_event_path(event), class: 'btn btn-success btn-sm' %></td>
-        <td><%= link_to '削除', event_path(event), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to '詳細', event_path(event), action: :get, class: 'btn btn-sm btn-raised btn-success' %></td>
+        <td><%= link_to '編集', edit_event_path(event), class: 'btn btn-sm btn-raised btn-success' %></td>
+        <td><%= link_to '削除', event_path(event), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-sm btn-raised btn-success' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'イベント登録', new_event_path, class: 'btn btn-success btn-lg m-5' %>
+<%= link_to 'イベント登録', new_event_path, class: 'btn btn-raised btn-success btn-lg m-5' %>

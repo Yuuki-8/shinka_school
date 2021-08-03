@@ -1,4 +1,5 @@
 import 'bootstrap';
+import 'bootstrap-material-design';
 import '@fortawesome/fontawesome-free/js/all';
 import "chartkick/chart.js";
 import '../stylesheets/application';
