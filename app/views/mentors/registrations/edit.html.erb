@@ -66,7 +66,7 @@
                   </svg>
                 </span>
               </div>
-              <%= f.select :gender, Mentor.genders.keys, prompt: "性別を選択してください", class: "form-control", placeholder: "性別", type: "gender" %>
+              <%= f.select :gender, Mentor.genders.keys.map { |k| [I18n.t("enums.mentor.gender.#{k}")]}, prompt: "性別を選択してください", class: "form-control", placeholder: "性別", type: "gender" %>
             </div> <!-- input-group.// -->
           </div>
           <div class="form-group">
