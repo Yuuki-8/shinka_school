@@ -14,7 +14,7 @@ class Event < ApplicationRecord
     end
   end
 
-  def notification_to_slack
+  def notification_event_just_to_slack
     notifier = Slack::Notifier.new(
       ENV['SLACK_WEBHOOK_URL'],
       channel: "##{ENV['SLACK_CHANNEL']}",
@@ -23,7 +23,7 @@ class Event < ApplicationRecord
     notifier.ping "イベント名：#{self.title}は参加者の募集を締め切りました。http://localhost:3000/events/#{self.id}"
   end
 
-  def notification_to_slack_before_one_hour
+  def notification_event_before_one_hour_to_slack
     notifier = Slack::Notifier.new(
       ENV['SLACK_WEBHOOK_URL'],
       channel: "##{ENV['SLACK_CHANNEL']}",
