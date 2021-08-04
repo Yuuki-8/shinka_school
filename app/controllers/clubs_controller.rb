@@ -22,24 +22,29 @@ class ClubsController < ApplicationController
       flash[:notice] = "サークルを新規作成しました"
       redirect_to controller: :clubs, action: :index
     else
+      flash[:notice] = "サークルを新規作成できませんでした"
       redirect_to controller: :clubs, action: :new
     end
   end
 
   def update
     @club = Club.find_by(params[:id])
-    byebug
     if @club.update(club_params)
       flash[:notice] = "サークル情報を更新しました"
       redirect_to controller: :clubs, action: :index
     else
+      flash[:notice] = "サークル情報を更新できませんでした"
       redirect_to controller: :clubs, action: :edit, id: @club.id
     end
   end
 
   def destroy
     @club = Club.find(params[:id])
-    @club.delete
+    if @club.delete
+      flash[:notice] = "サークル情報を削除しました"
+    else
+      flash[:notice] = "サークル情報を削除できませんでした"
+    end
     redirect_to controller: :clubs, action: :index
   end
 

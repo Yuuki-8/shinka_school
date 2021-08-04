@@ -4,6 +4,6 @@ RSpec.describe Reservation, type: :request do
   before do
   end
 
-  describe 'バリデーション' do
+  describe '' do
   end
 end

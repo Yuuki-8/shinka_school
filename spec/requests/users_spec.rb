@@ -1,12 +1,71 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :request do
-  before do
-    job = create(:job)
-    pref = create(:pref)
-    @user = build(:user, job: job, pref: pref)
+  let(:user) { create(:user) }
+  let(:user_params) { attributes_for(:user, gender: 'male') }
+  let(:invalid_user_params) { attributes_for(:user, name: "", gender: 'male') }
+
+  describe "GET /users/" do
+    it 'index画面の表示に成功すること' do
+      get users_path
+      expect(response).to(have_http_status(200))
+    end
   end
 
-  describe 'バリデーション' do
+  describe 'POST #create' do
+    context 'パラメータが妥当な場合' do
+      it 'リクエストが成功すること' do
+        post user_registration_path, params: { user: user_params }
+        expect(response.status).to(eq(302))
+      end
+
+      it 'createが成功すること' do
+        expect do
+          post user_registration_path, params: { user: user_params }
+        end.to(change(User, :count).by(1))
+      end
+    end
+
+    context 'パラメータが不正な場合' do
+      it 'リクエストが成功すること' do
+        post user_registration_path, params: { user: invalid_user_params }
+        expect(response.status).to(eq(200))
+      end
+
+      it 'createが失敗すること' do
+        expect do
+          post user_registration_path, params: { user: invalid_user_params }
+        end.to_not(change(User, :count))
+      end
+    end
+  end
+
+  describe 'PUT #update' do
+    context 'パラメータが妥当な場合' do
+      let(:user_params) { user.attributes }
+      it 'リクエストが成功すること' do
+        put user_registration_path, params: { user: user_params }
+        expect(response.status).to(eq(302))
+      end
+
+      it 'updateが成功すること' do
+        expect do
+          put user_registration_path, params: { user: user_params }
+        end.to(change(User, :count).by(1))
+      end
+    end
+
+    context 'パラメータが不正な場合' do
+      it 'リクエストが成功すること' do
+        put user_registration_path, params: { user: invalid_user_params }
+        expect(response.status).to(eq(302))
+      end
+
+      it 'updateが失敗すること' do
+        expect do
+          put user_registration_path, params: { user: invalid_user_params }
+        end.to_not(change(User, :count))
+      end
+    end
   end
 end
