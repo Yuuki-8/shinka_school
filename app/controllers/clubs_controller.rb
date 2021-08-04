@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   def index
-    @clubs = Club.all
+    @clubs = Club.all.order(id: :desc).page(params[:page]).per(5)
   end
 
   def show

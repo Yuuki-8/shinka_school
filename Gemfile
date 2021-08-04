@@ -30,6 +30,7 @@ gem 'mini_magick'
 gem 'whenever', require: false
 gem 'rails-i18n'
 gem 'slack-notifier'
+gem 'kaminari'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
