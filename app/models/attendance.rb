@@ -13,8 +13,8 @@ class Attendance < ApplicationRecord
   end
 
   def start_end_check
-    if self.start_date.present? && self.end_date.present?
-      errors.add(:end_date, "が開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
+    if self.start_time.present? && self.end_time.present?
+      errors.add(:end_time, "が開始時刻を上回っています。正しく記入してください。") if self.start_time > self.end_time
     end
   end
 end

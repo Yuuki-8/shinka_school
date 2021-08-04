@@ -5,7 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :mentor, optional: true
 
   validate  :start_end_check
-  validates :start_time, presence: true
+  validates :start_date, presence: true
 
   default_scope -> { order(start_date: :asc) }
 
@@ -13,8 +13,8 @@ class Reservation < ApplicationRecord
 
   #時間の矛盾を防ぐ
   def start_end_check
-    if self.start_time.present? && self.end_time.present?
-      errors.add(:end_time, "が勤務開始時刻を上回っています。正しく記入してください。") if self.start_time > self.end_time
+    if self.start_date.present? && self.end_date.present?
+      errors.add(:end_date, "が勤務開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
     end
   end
 

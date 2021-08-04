@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :name_kana, presence: true, format: { with: NameKanaValidator::CODE_REGEX, multiline: true }, length: { maximum: 100 }
-  validates :phone, presence: true, format: { with: PhoneNoValidator::CODE_REGEX, multiline: true }, length: { maximum: 15 }
+  validates :phone, presence: true, format: { with: PhoneNoValidator::CODE_REGEX, multiline: true }, length: { maximum: 11 }
   validates :email, format: { with: EmailFormatValidator::CODE_REGEX }, allow_blank: true
 
   enum gender: %i( male female )
