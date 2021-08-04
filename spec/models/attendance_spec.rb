@@ -11,6 +11,13 @@ RSpec.describe Attendance, type: :model do
       expect(@attendance.valid?).to(eq(true))
     end
 
+    describe "start_time" do
+      it 'start_timeが空だと @admin.valid? が falseになること' do
+        @attendance.start_time = ''
+        expect(@attendance.valid?).to(eq(false))
+      end
+    end
+
     describe "start_end_check" do
       context "start_timeよりもend_timeの方が未来の時刻である場合" do
         it '@attendance.valid? はtrueになること' do
