@@ -29,10 +29,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find_by(params[:id])
+    @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "イベント情報を更新しました"
-      redirect_to controller: :events, action: :index
+      redirect_to controller: :events, action: :show
     else
       flash[:notice] = "イベント情報を更新できませんでした"
       redirect_to controller: :events, action: :edit, id: @event.id
@@ -65,6 +65,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start_date, :end_date, :deadline_date, :place)
+    params.require(:event).permit(:title, :description, :start_date, :end_date, :deadline_date, :place)
   end
 end

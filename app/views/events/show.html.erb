@@ -4,6 +4,7 @@
   <thead>
     <tr  align="center" valign="middle">
       <th>イベント名</th>
+      <th>イベント詳細</th>
       <th>開催場所</th>
       <th>イベント開始時間</th>
       <th>イベント終了時間</th>
@@ -15,6 +16,7 @@
   <tbody>
     <tr  align="center" valign="middle">
       <td><%= @event.title %></td>
+      <td><%= @event.description %></td>
       <td><%= @event.place %></td>
       <td><%= @event.start_date.strftime('%Y/%m/%d %H:%M') %></td>
       <td><%= @event.end_date.strftime('%Y/%m/%d %H:%M') %></td>

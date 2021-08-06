@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "title"
     t.string "place"
+    t.string "description"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "deadline_date"

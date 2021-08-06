@@ -16,12 +16,16 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :admins
+  resources :admins do
+    get :home, on: :collection
+  end
   resources :users do
     get :profile, on: :member
+    get :home, on: :collection
   end
   resources :mentors do
     get :profile, on: :member
+    get :home, on: :collection
   end
   resources :reservations
   resources :calendars

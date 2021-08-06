@@ -97,10 +97,13 @@ ja:
         sign_in: "ログイン"
       mentor:
         signed_out: "ログアウトしました"
+        already_signed_out: "既にログアウトしています"
       user:
         signed_out: "ログアウトしました"
+        already_signed_out: "既にログアウトしています"
       admin:
         signed_out: "ログアウトしました"
+        already_signed_out: "既にログアウトしています"
     shared:
       links:
         back: "戻る"
