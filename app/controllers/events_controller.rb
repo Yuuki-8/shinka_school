@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if @event.delete
+    if @event.discard
       flash[:notice] = "イベントを削除しました"
     else
       flash[:notice] = "イベントを削除できませんでした"

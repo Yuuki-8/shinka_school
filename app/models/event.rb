@@ -1,8 +1,9 @@
 class Event < ApplicationRecord
+  include Discard::Model
+  default_scope -> { kept }
+
   has_many :user_events
   has_many :users, through: :user_events
-
-  default_scope -> { order(start_date: :asc) }
 
   validate  :start_end_check
   validate  :deadline_start_check

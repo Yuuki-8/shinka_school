@@ -4,6 +4,7 @@ create_table :clubs, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf
     t.string :name
     t.text :description
     t.string :image
+    t.datetime :discarded_at
     t.datetime :created_at
     t.datetime :updated_at
 end

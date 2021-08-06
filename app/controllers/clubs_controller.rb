@@ -41,7 +41,7 @@ class ClubsController < ApplicationController
 
   def destroy
     @club = Club.find(params[:id])
-    if @club.delete
+    if @club.discard
       flash[:notice] = "サークル情報を削除しました"
     else
       flash[:notice] = "サークル情報を削除できませんでした"
