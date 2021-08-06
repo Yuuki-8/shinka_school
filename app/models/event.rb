@@ -28,20 +28,19 @@ class Event < ApplicationRecord
   end
 
   def notification_event_just_to_slack
-    notifier = Slack::Notifier.new(
-      ENV['SLACK_WEBHOOK_URL'],
-      channel: "##{ENV['SLACK_CHANNEL']}",
-      username: 'イベント管理者'
-    )
-    notifier.ping "イベント名：#{self.title}は参加者の募集を締め切りました。http://localhost:3000/events/#{self.id}"
+    notification_to_slack("イベント名：#{self.title}は参加者の募集を締め切りました。http://localhost:3000/events/#{self.id}")
   end
 
   def notification_event_before_one_hour_to_slack
+    notification_to_slack("イベント名：#{self.title}は参加者の募集締め切り1時間前です。http://localhost:3000/events/#{self.id}")
+  end
+
+  def notification_to_slack(message)
     notifier = Slack::Notifier.new(
       ENV['SLACK_WEBHOOK_URL'],
       channel: "##{ENV['SLACK_CHANNEL']}",
       username: 'イベント管理者'
     )
-    notifier.ping "イベント名：#{self.title}は参加者の募集締め切り1時間前です。http://localhost:3000/events/#{self.id}"
+    notifier.ping message
   end
 end
