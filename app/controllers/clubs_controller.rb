@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
   def index
-    @clubs = Club.all.order(id: :desc).page(params[:page]).per(5)
+    @q = Club.ransack(params[:q])
+    @clubs = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(5)
   end
 
   def show
