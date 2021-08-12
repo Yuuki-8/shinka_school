@@ -1,0 +1,29 @@
+
+<h1>メンタリング可能時刻設定</h1>
+<% if @schedule_settings.present? %>
+  <table class="table">
+    <thead style="background-color:#ccc;">
+      <tr align="center" valign="middle">
+        <th>曜日</th>
+        <th>設定時刻</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @schedule_settings.each do |schedule| %>
+        <tr align="center" valign="middle">
+          <td><%= I18n.t("enums.mentor_schedule_setting.weekday_code.#{schedule.weekday_code}") %></td>
+          <td><%= schedule.start_time.strftime('%H:%M') %> 〜 <%= schedule.end_time.strftime('%H:%M') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+<% end %>
+
+<% if @mentor_setting.present? %>
+  <%= link_to 'メンタリング可能時刻編集', edit_mentor_setting_path(@mentor_setting), class: 'btn btn-raised btn-success btn-lg m-5' %>
+<% else %>
+  <%= link_to 'メンタリング可能時刻登録', new_mentor_setting_path, class: 'btn btn-raised btn-success btn-lg m-5' %>
+<% end %>

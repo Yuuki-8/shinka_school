@@ -46,6 +46,8 @@ gem 'kaminari'
 gem 'ransack'
 # 論理削除機能
 gem 'discard'
+# 動的フォーム
+gem 'cocoon'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -12,6 +12,8 @@ class Mentor < ApplicationRecord
   belongs_to :pref, optional: true
   has_many :reservations
   has_many :users, through: :reservations
+  has_one :mentor_setting
+  has_many :temporary_schedules
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :name_kana, presence: true, format: { with: NameKanaValidator::CODE_REGEX, multiline: true }, length: { maximum: 100 }

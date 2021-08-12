@@ -1,0 +1,11 @@
+<% if f.object.weekday_code == w_code || f.object.weekday_code.nil? %>
+  <div class="nested-fields">
+    <div class="row border-top">
+        <%= f.hidden_field :weekday_code, value: w_code %>
+      <div class="form-group m-2">
+        <%= f.label :start_time,"メンタリング可能時刻", {class:'control-label'}%><br>
+        <%= f.time_select :start_time, { minute_step: 10 }, class: 'form-control bootstrap-date mb-3' %>〜<%= f.time_select :end_time, { minute_step: 10 }, class: 'form-control bootstrap-date mb-3' %><span>　　　</span><%= link_to_remove_association "削除", f, class: 'btn btn-danger btn-sm' %>
+      </div>
+    </div>
+  </div>
+<% end %>

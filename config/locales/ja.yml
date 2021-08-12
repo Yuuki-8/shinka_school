@@ -7,6 +7,8 @@ ja:
       event: 'イベント'
       job: '職種'
       mentor: 'メンター'
+      mentor_setting: 'メンター設定'
+      mentor_schedule_setting: 'メンタリング可能時刻設定'
       pref: '都道府県'
       reservation: '予約'
       user: 'ユーザー'
@@ -41,6 +43,10 @@ ja:
         self_introduction: '自己紹介'
         email: 'メールアドレス'
         password: 'パスワード'
+      mentor_schedule_setting:
+        start_time: 'メンタリング可能開始時刻'
+        end_time: 'メンタリング可能終了時刻'
+        weekday_code: '曜日'
       pref:
         name: '都道府県名'
       reservation:
@@ -68,6 +74,15 @@ ja:
       gender:
         male: '男性'
         female: '女性'
+    mentor_schedule_setting:
+      weekday_code:
+        sun: '日曜日'
+        mon: '月曜日'
+        tue: '火曜日'
+        wed: '水曜日'
+        thu: '木曜日'
+        fri: '金曜日'
+        sat: '土曜日'
 
   errors:
     messages:

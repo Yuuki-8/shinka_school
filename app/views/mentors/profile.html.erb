@@ -16,7 +16,7 @@
         <li class='form-control'>ニックネーム： <%= @mentor.nickname %></li>
         <li class='form-control'>電話番号： <%= @mentor.phone %></li>
         <li class='form-control'>誕生日： <%= @mentor.birthday %></li>
-        <li class='form-control'>性別： <%= @mentor.gender %></li>
+        <li class='form-control'>性別： <%= I18n.t("enums.user.gender.#{@mentor.gender}") %></li>
         <li class='form-control'>都道府県： <%= @mentor.pref.name %></li>
         <li class='form-control'>職業： <%= @mentor.job.name %></li>
         <li class='form-control'>所属： <%= @mentor.work_place %></li>

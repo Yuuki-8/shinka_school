@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     post :join_to_club, on: :member
     delete :undo_from_club, on: :member
   end
+  resources :mentor_settings
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

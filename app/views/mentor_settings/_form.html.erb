@@ -1,0 +1,125 @@
+<%= form_with(model: @mentor_setting) do |f| %>
+  <%= render 'shared/error_messages', resource: f.object %>
+  <%= f.hidden_field :mentor_id, value: current_mentor.id %>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>月曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'mon' %>
+        <% end %>
+        <div id="detail-association-insertion-point-mon"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'mon' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-mon',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>火曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'tue' %>
+        <% end %>
+        <div id="detail-association-insertion-point-tue"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'tue' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-tue',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>水曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'wed' %>
+        <% end %>
+        <div id="detail-association-insertion-point-wed"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'wed' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-wed',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+    </div>
+    <div class="row">
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>木曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'thu' %>
+        <% end %>
+        <div id="detail-association-insertion-point-thu"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'thu' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-thu',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>金曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'fri' %>
+        <% end %>
+        <div id="detail-association-insertion-point-fri"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'fri' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-fri',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>土曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'sat' %>
+        <% end %>
+        <div id="detail-association-insertion-point-sat"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'sat' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-sat',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+    </div>
+    <div class="row">
+      <div class="col col-xl-4 col-lg-4 col-md-4 border">
+        <h2>日曜日</h2>
+        <%= f.fields_for :mentor_schedule_settings do |form| %>
+          <%= render "mentor_schedule_setting_fields", f: form, w_code: 'sun' %>
+        <% end %>
+        <div id="detail-association-insertion-point-sun"></div>
+        <div class="add-botton-box">
+          <%= link_to_add_association "追加", f, :mentor_schedule_settings, render_options: {locals: { w_code: 'sun' }},
+          class: 'btn btn-success btn-sm m-2',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point-sun',
+            association_insertion_method: 'after'
+            }
+          %>
+        </div>
+      </div><br>
+    </div>
+    <%= f.submit "Save", class: "btn btn-success btn-lg m-5" %><span>　　　</span><%= link_to '一覧', mentor_settings_path, class: 'btn btn-success btn-lg' %>
+  </div>
+<% end %>

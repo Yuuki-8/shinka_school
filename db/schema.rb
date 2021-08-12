@@ -63,6 +63,23 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at"
   end
 
+  create_table "mentor_schedule_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "mentor_setting_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "weekday_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["mentor_setting_id"], name: "index_mentor_schedule_settings_on_mentor_setting_id"
+  end
+
+  create_table "mentor_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "mentor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["mentor_id"], name: "index_mentor_settings_on_mentor_id"
+  end
+
   create_table "mentors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "job_id"
     t.integer "pref_id"
@@ -102,6 +119,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at"
     t.index ["mentor_id"], name: "index_reservations_on_mentor_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "temporary_schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "mentor_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["mentor_id"], name: "index_temporary_schedules_on_mentor_id"
   end
 
   create_table "user_clubs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -145,8 +171,11 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   add_foreign_key "attendances", "admins"
+  add_foreign_key "mentor_schedule_settings", "mentor_settings"
+  add_foreign_key "mentor_settings", "mentors"
   add_foreign_key "reservations", "mentors"
   add_foreign_key "reservations", "users"
+  add_foreign_key "temporary_schedules", "mentors"
   add_foreign_key "user_clubs", "clubs"
   add_foreign_key "user_clubs", "users"
   add_foreign_key "user_events", "events"
