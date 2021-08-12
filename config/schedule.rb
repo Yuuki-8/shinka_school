@@ -30,3 +30,7 @@ every 1.minute do
   rake "notification:event_just_to_slack"
   rake "notification:event_before_one_hour_to_slack"
 end
+
+every '0 0 1 * *' do
+  rake "temporary_schedule:batch_make_and_delete_schedules"
+end

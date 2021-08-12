@@ -48,6 +48,8 @@ gem 'ransack'
 gem 'discard'
 # 動的フォーム
 gem 'cocoon'
+# 複数レコード一括登録
+gem 'activerecord-import'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
