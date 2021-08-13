@@ -1,0 +1,51 @@
+<h1>イベント詳細</h1>
+<br>
+<table class="table">
+  <thead>
+    <tr align="center" valign="middle">
+      <th>イベント名</th>
+      <th>イベント詳細</th>
+      <th>開催場所</th>
+      <th>イベント開始時間</th>
+      <th>イベント終了時間</th>
+      <th>募集締切日</th>
+      <th>参加人数</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr align="center" valign="middle">
+      <td><%= @event.title %></td>
+      <td><%= @event.description %></td>
+      <td><%= @event.place %></td>
+      <td><%= @event.start_date.strftime('%Y/%m/%d %H:%M') %></td>
+      <td><%= @event.end_date.strftime('%Y/%m/%d %H:%M') %></td>
+      <td><%= @event.deadline_date.strftime('%Y/%m/%d %H:%M') %></td>
+      <td><%= @event.users.count %></td>
+      <% if @event.deadline_date >= Time.zone.now %>
+        <% if @event.user_events.where(user: current_user).present? %>
+          <td><%= link_to '参加取消', undo_from_event_event_path(@event), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+        <% else %>
+          <td><%= link_to '参加する', join_to_event_event_path(@event), method: :post, class: 'btn btn-success btn-sm' %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<br>
+<table class="table">
+  <thead style="background-color:#ccc;">
+    <tr align="center" valign="middle">
+      <th>参加者一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.users.each do |user| %>
+      <tr align="center" valign="middle">
+        <td><%= user.name %></td>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<span>　　</span><%= link_to '編集', edit_event_path(@event), class: 'btn btn-success btn-md' %><span>　　　</span><%= link_to '一覧', events_path, class: 'btn btn-success btn-md' %>

@@ -1,0 +1,22 @@
+<%= render "temporary_schedules/search" %>
+
+<h1>スケジュール一覧</h1>
+
+<table class="table">
+  <thead style="background-color:#ccc;">
+    <tr align="center" valign="middle">
+      <th>メンタリング可能時刻</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @temporary_schedules.each do |schedule| %>
+      <tr align="center" valign="middle">
+        <td><%= schedule.start_time.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= schedule.end_time.strftime('%Y年%m月%d日 %H:%M') %>(<%=schedule.to_ja_wday%>)</td>
+        <td><%= link_to '予約依頼', create_reservation_temporary_schedule_path(schedule), method: :put, data: { confirm: 'この日程で予約してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @temporary_schedules %>

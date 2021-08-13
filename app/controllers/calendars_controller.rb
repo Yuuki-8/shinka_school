@@ -19,9 +19,9 @@ class CalendarsController < ApplicationController
   def index
     @events = nil
     if current_user?
-      @events = Reservation.where(user_id: current_user.id).to_a + current_user.events.to_a
+      @events = Reservation.where(user_id: current_user.id, reservation_status: 1).to_a + current_user.events.to_a
     elsif current_mentor?
-      @events = Reservation.where(mentor_id: current_mentor.id)
+      @events = Reservation.where(mentor_id: current_mentor.id, reservation_status: 1)
     elsif current_admin?
       @events = Reservation.where(admin_id: current_admin.id)
     end
@@ -32,11 +32,11 @@ class CalendarsController < ApplicationController
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_path }
-        format.js { render 'reservations/create.js.erb', layout: false}
+        format.js { render 'calenders/create.js.erb', layout: false}
       end
     else
       respond_to do |format|
-        format.js { render 'reservations/error.js.erb', layout: false }
+        format.js { render 'calenders/error.js.erb', layout: false }
       end
     end
   end
@@ -55,11 +55,11 @@ class CalendarsController < ApplicationController
     if @object.update(update_params)
       respond_to do |format|
         format.html { redirect_to reservations_path }
-        format.js { render 'reservations/update.js.erb', layout: false}
+        format.js { render 'calendars/update.js.erb', layout: false}
       end
     else
       respond_to do |format|
-        format.js { render 'reservations/error.js.erb', layout: false }
+        format.js { render 'calendars/error.js.erb', layout: false }
       end
     end
   end

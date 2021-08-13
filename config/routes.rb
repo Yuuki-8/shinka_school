@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     get :profile, on: :member
     get :home, on: :collection
   end
-  resources :reservations
+  resources :reservations do
+    put :accept_reservation, on: :member
+  end
   resources :calendars
   resources :attendances
   resources :events do
@@ -39,5 +41,9 @@ Rails.application.routes.draw do
     delete :undo_from_club, on: :member
   end
   resources :mentor_settings
+  resources :temporary_schedules do
+    get :schedule_of_mentor, on: :member
+    put :create_reservation, on: :member
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

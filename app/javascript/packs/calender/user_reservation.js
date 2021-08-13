@@ -21,7 +21,7 @@ document.addEventListener('turbolinks:load', function () {
             center: 'title',
             right: 'today prev,next'
         },
-        initialView: 'timeGridWeek',
+        initialView: 'dayGridMonth',
         expandRows: true,
         stickyHeaderDates: true,
         buttonText: {
@@ -77,47 +77,47 @@ document.addEventListener('turbolinks:load', function () {
                 display: 'background',
             },
         ],
-        dateClick: function(info){
-            //クリックした日付の情報を取得
-            const year  = info.date.getFullYear();
-            const month = (info.date.getMonth() + 1);
-            const day = info.date.getDate();
-            const startHour = (( '00' + (info.date.getHours() - 9)).slice( -2 ));
-            const endHour = (( '00' + (info.date.getHours() - 8)).slice( -2 ));
-            const min = ( '00' + info.date.getMinutes()).slice( -2 );
+        // dateClick: function(info){
+        //     //クリックした日付の情報を取得
+        //     const year  = info.date.getFullYear();
+        //     const month = (info.date.getMonth() + 1);
+        //     const day = info.date.getDate();
+        //     const startHour = (( '00' + (info.date.getHours() - 9)).slice( -2 ));
+        //     const endHour = (( '00' + (info.date.getHours() - 8)).slice( -2 ));
+        //     const min = ( '00' + info.date.getMinutes()).slice( -2 );
 
-            //ajaxでevents/newを着火させ、htmlを受け取ります
-            $.ajax({
-                type: 'GET',
-                url:  '/calendars/new',
-            }).done(function (res) {
-                // 成功処理
-                // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
-                $('.modal-body').html(res);
+        //     //ajaxでevents/newを着火させ、htmlを受け取ります
+        //     $.ajax({
+        //         type: 'GET',
+        //         url:  '/calendars/new',
+        //     }).done(function (res) {
+        //         // 成功処理
+        //         // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
+        //         $('.modal-body').html(res);
 
-                //フォームの年、月、日を自動入力
-                $('#reservation_start_date_1i').val(year);
-                $('#reservation_start_date_2i').val(month);
-                $('#reservation_start_date_3i').val(day);
-                $('#reservation_start_date_4i').val(startHour);
-                $('#reservation_start_date_5i').val(min);
+        //         //フォームの年、月、日を自動入力
+        //         $('#reservation_start_date_1i').val(year);
+        //         $('#reservation_start_date_2i').val(month);
+        //         $('#reservation_start_date_3i').val(day);
+        //         $('#reservation_start_date_4i').val(startHour);
+        //         $('#reservation_start_date_5i').val(min);
 
-                $('#reservation_end_date_1i').val(year);
-                $('#reservation_end_date_2i').val(month);
-                $('#reservation_end_date_3i').val(day);
-                $('#reservation_end_date_4i').val(endHour);
-                $('#reservation_end_date_5i').val(min);
+        //         $('#reservation_end_date_1i').val(year);
+        //         $('#reservation_end_date_2i').val(month);
+        //         $('#reservation_end_date_3i').val(day);
+        //         $('#reservation_end_date_4i').val(endHour);
+        //         $('#reservation_end_date_5i').val(min);
 
-                //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
-                //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
+        //         //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
+        //         //開始時間と終了時間のフォームを表しているところのidを確認してもらうことが確実です
 
-                $('#create-modal').fadeIn();
+        //         $('#create-modal').fadeIn();
 
-            }).fail(function (result) {
-                // 失敗処理
-                alert("failed");
-            });
-        },
+        //     }).fail(function (result) {
+        //         // 失敗処理
+        //         alert("failed");
+        //     });
+        // },
         eventClick: function(info){
             const instanceId = info.event._def.publicId
             const className = info.event.extendedProps.class_name

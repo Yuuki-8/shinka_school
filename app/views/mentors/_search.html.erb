@@ -1,0 +1,28 @@
+<div class="m-5 border-bottom">
+  <div class="search-form">
+    <%= search_form_for @q do |f| %>
+      <div class="row no-padding no-margins">
+        <div class="col-md-2">
+          <div class="field m-2">
+            <%= f.label :name %><br>
+            <%= f.search_field :name_cont, { include_blank: '指定なし' } %>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="field m-2">
+            <%= f.label :gender %><br>
+            <%= f.select :gender_eq, Mentor.genders.map { |k, v| [I18n.t("enums.mentor.gender.#{k}"), v]}, { include_blank: '指定なし' }, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="field m-2">
+            <%= f.label :job, '職業' %><br>
+            <%= f.collection_select :job_id_cont, Job.all, :id, :name, { include_blank: '指定なし' }, class: "form-control", placeholder: "職業", type: "job" %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "検索", class: "btn btn-primary btn-sm m-2" %>
+    <% end %>
+  </div>
+</div>
+

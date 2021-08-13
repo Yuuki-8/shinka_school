@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  before_save :set_status
+  # before_save :set_status
 
   belongs_to :user, optional: true
   belongs_to :mentor, optional: true
@@ -24,5 +24,10 @@ class Reservation < ApplicationRecord
     else
       self.reservation_status = 0
     end
+  end
+
+  def to_ja_wday
+    wday = { '0': '日', '1': '月', '2': '火', '3': '水', '4': '木', '5': '金', '6': '土' }
+    wday[:"#{self.start_date.wday.to_s}"]
   end
 end

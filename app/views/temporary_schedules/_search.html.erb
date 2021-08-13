@@ -1,0 +1,17 @@
+<div class="m-5 border-bottom">
+  <div class="search-form">
+    <%= search_form_for(@q, url: schedule_of_mentor_temporary_schedule_path(@mentor)) do |f| %>
+      <div class="row no-padding no-margins">
+        <div class="col-md-3">
+          <div class="field m-2">
+            <%= f.label :start_time, "実施日" %><br>
+            <%= f.date_field :start_time_gteq %>〜
+            <%= f.date_field :start_time_lteq_end_of_day %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "検索", class: "btn btn-primary btn-sm m-2" %>
+    <% end %>
+  </div>
+</div>
+

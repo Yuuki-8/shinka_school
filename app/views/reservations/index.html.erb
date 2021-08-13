@@ -1,47 +1,24 @@
-<div id='calendar'></div>
-<%# ↑このコードさえあればカレンダーが現れてくれます %>
-<% if user_signed_in? %>
-  <%= javascript_pack_tag 'calender/user_reservation' %>
-<% elsif mentor_signed_in? %>
-  <%= javascript_pack_tag 'calender/mentor_reservation' %>
+<% if @reservations.present? %>
+  <h1>メンタリング予約一覧</h1>
+  <table class="table">
+    <thead style="background-color:#ccc;">
+      <tr align="center" valign="middle">
+        <th>ユーザー名</th>
+        <th>メンタリング予約時刻</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr align="center" valign="middle">
+          <td><%= reservation.user.name %></td>
+          <td><%= reservation.start_date.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= reservation.end_date.strftime('%Y年%m月%d日 %H:%M') %>(<%=reservation.to_ja_wday%>)</td>
+          <td><%= link_to '予約受諾', accept_reservation_reservation_path(reservation), method: :put, data: { confirm: 'この日程で受諾してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-  <%= javascript_pack_tag 'calender/user_reservation' %>
+  <h1>現在、新規のメンタリング予約はありません</h1>
 <% end %>
-
-<div class="modal" id="create-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">予定登録</h5>
-        <a href="#" class="btn-close" data-dismiss="modal" aria-label="close"></a>
-      </div>
-      <div class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="edit-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">予定更新</h5>
-        <a href="#" class="btn-close" data-dismiss="modal" aria-label="close"></a>
-      </div>
-      <div class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="response-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <a href="#" class="btn-close" data-dismiss="modal" aria-label="close"></a>
-      </div>
-      <div class="response-modal-body">
-      </div>
-    </div>
-  </div>
-</div>

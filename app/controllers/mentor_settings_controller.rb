@@ -1,5 +1,5 @@
 class MentorSettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update, :destroy]
+  before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   def index
     @mentor_setting = current_mentor.mentor_setting
@@ -46,7 +46,7 @@ class MentorSettingsController < ApplicationController
 
   private
 
-  def set_setting
+  def set_resource
     @mentor_setting = MentorSetting.find(params[:id])
   end
 
