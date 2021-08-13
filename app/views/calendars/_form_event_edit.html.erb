@@ -2,6 +2,7 @@
   <div class="profile_box">
     <ul>
       <li class='form-control'>タイトル： <%= @reservation.title %></li>
+      <li class='form-control'>詳細： <%= @reservation.description %></li>
       <li class='form-control'>開催場所： <%= @reservation.place %></li>
       <li class='form-control'>開始時刻： <%= @reservation.start_date.strftime('%Y年%m月%d日 %H:%M') %></li>
       <li class='form-control'>終了時刻： <%= @reservation.end_date.strftime('%Y年%m月%d日 %H:%M') %></li>
