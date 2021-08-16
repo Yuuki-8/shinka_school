@@ -23,7 +23,7 @@ class TemporarySchedulesController < ApplicationController
   def schedule_of_mentor
     @mentor = Mentor.find(params[:id])
     @q = @mentor.temporary_schedules.ransack(params[:q])
-    @temporary_schedules = @q.result(distinct: true).order(id: :asc).page(params[:page]).per(20)
+    @temporary_schedules = @q.result(distinct: true).a_week_ago.order(id: :asc).page(params[:page]).per(20)
   end
 
   def create_reservation

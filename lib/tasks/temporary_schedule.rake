@@ -23,7 +23,7 @@ namespace :temporary_schedule do
       end
     end
     puts "仮スケジュール登録件数：#{temporary_schedules.count}件"
-    # TemporarySchedule.import(temporary_schedules)
+    TemporarySchedule.import(temporary_schedules)
     puts "仮スケジュールを#{temporary_schedules.count}件、作成完了しました"
     puts "temporary_schedule:first_make_and_delete_schedules... end"
   end
@@ -36,8 +36,8 @@ namespace :temporary_schedule do
     temporary_schedules = []
     mentors.map do |mentor|
       settings = mentor.mentor_setting.mentor_schedule_settings.group_by {|s| s.weekday_code } #mentor毎の設定全てを呼び出し
-      beginning_month = Date.today.beginning_of_month #月初
-      end_month = Date.today.end_of_month #月末
+      beginning_month = Date.today.since(3.months).beginning_of_month #月初
+      end_month = beginning_month.end_of_month #月末
       (beginning_month..end_month).each do |date|
         settings[MentorScheduleSetting.weekday_codes.invert[date.wday]].map do |setting|
           setting.start_time.to_i.step(setting.end_time.to_i, 3600).map { |m| Time.zone.at(m).strftime('%F %T') }.map do |time|
@@ -51,7 +51,7 @@ namespace :temporary_schedule do
       end
     end
     puts "仮スケジュール登録件数：#{temporary_schedules.count}件"
-    # TemporarySchedule.import(temporary_schedules)
+    TemporarySchedule.import(temporary_schedules)
     puts "仮スケジュールを#{temporary_schedules.count}件、作成完了しました"
     puts "過去の仮スケジュール削除開始"
     destroy_targets = TemporarySchedule.where("end_time <= ?", Date.today.ago(1.month).end_of_month)

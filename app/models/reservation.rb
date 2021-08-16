@@ -5,6 +5,7 @@ class Reservation < ApplicationRecord
   belongs_to :mentor, optional: true
 
   validate  :start_end_check
+  validates :title, presence: true
   validates :start_date, presence: true
 
   default_scope -> { order(start_date: :asc) }

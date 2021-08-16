@@ -13,8 +13,8 @@
       <% @reservations.each do |reservation| %>
         <tr align="center" valign="middle">
           <td><%= reservation.user.name %></td>
-          <td><%= reservation.start_date.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= reservation.end_date.strftime('%Y年%m月%d日 %H:%M') %>(<%=reservation.to_ja_wday%>)</td>
-          <td><%= link_to '予約受諾', accept_reservation_reservation_path(reservation), method: :put, data: { confirm: 'この日程で受諾してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+          <td><%= reservation.start_date.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= reservation.end_date.strftime('%H:%M') %>(<%=reservation.to_ja_wday%>)</td>
+          <td><%= link_to '予約受諾', accept_reservation_reservation_path(reservation), method: :put, data: { confirm: "#{reservation.start_date.strftime('%Y年%m月%d日 %H:%M')}〜#{reservation.end_date.strftime('%H:%M')}(#{reservation.to_ja_wday})の日程で受諾してもよろしいですか？" }, class: 'btn btn-success btn-sm' %></td>
         </tr>
       <% end %>
     </tbody>

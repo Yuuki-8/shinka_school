@@ -13,8 +13,8 @@
   <tbody>
     <% @temporary_schedules.each do |schedule| %>
       <tr align="center" valign="middle">
-        <td><%= schedule.start_time.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= schedule.end_time.strftime('%Y年%m月%d日 %H:%M') %>(<%=schedule.to_ja_wday%>)</td>
-        <td><%= link_to '予約依頼', create_reservation_temporary_schedule_path(schedule), method: :put, data: { confirm: 'この日程で予約してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+        <td><%= schedule.start_time.strftime('%Y年%m月%d日 %H:%M') %> 〜 <%= schedule.end_time.strftime('%H:%M') %>(<%=schedule.to_ja_wday%>)</td>
+        <td><%= link_to '予約依頼', create_reservation_temporary_schedule_path(schedule), method: :put, data: { confirm: "#{schedule.start_time.strftime('%Y年%m月%d日 %H:%M')}〜#{schedule.end_time.strftime('%H:%M')}(#{schedule.to_ja_wday})の日程で予約してもよろしいですか？" }, class: 'btn btn-success btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
