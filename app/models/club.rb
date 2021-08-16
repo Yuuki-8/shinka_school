@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Club < ApplicationRecord
   include Discard::Model
   default_scope -> { kept }

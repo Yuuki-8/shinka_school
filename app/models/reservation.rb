@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reservation < ApplicationRecord
   # before_save :set_status
 
@@ -13,7 +15,7 @@ class Reservation < ApplicationRecord
 
   enum reservation_status: %i( before matched )
 
-  #時間の矛盾を防ぐ
+  # 時間の矛盾を防ぐ
   def start_end_check
     if self.start_date.present? && self.end_date.present?
       errors.add(:end_date, "が勤務開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
@@ -33,7 +35,7 @@ class Reservation < ApplicationRecord
   end
 
   def to_ja_wday
-    wday = { '0': '日', '1': '月', '2': '火', '3': '水', '4': '木', '5': '金', '6': '土' }
-    wday[:"#{self.start_date.wday.to_s}"]
+    wday = { '0': "日", '1': "月", '2': "火", '3': "水", '4': "木", '5': "金", '6': "土" }
+    wday[:"#{self.start_date.wday}"]
   end
 end

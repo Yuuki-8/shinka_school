@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Event, type: :request do
   before do
@@ -6,7 +8,7 @@ RSpec.describe Event, type: :request do
   end
 
   let(:event) { create(:event) }
-  let(:user_event) { create(:user_event, event: event, user: @user)}
+  let(:user_event) { create(:user_event, event: event, user: @user) }
   let(:create_params) do
     {
       event: {
@@ -32,7 +34,7 @@ RSpec.describe Event, type: :request do
   end
 
   describe "GET /events/" do
-    it 'index画面の表示に成功すること' do
+    it "index画面の表示に成功すること" do
       sign_in @user
       get events_path
       expect(response).to(have_http_status(200))
@@ -40,7 +42,7 @@ RSpec.describe Event, type: :request do
   end
 
   describe "GET /events/:id" do
-    it 'show画面の表示に成功すること' do
+    it "show画面の表示に成功すること" do
       sign_in @user
       get events_path(event)
       expect(response).to(have_http_status(200))
@@ -49,7 +51,7 @@ RSpec.describe Event, type: :request do
 
   describe "POST /events" do
     context "paramsが正常な値の場合" do
-      it 'createに成功すること' do
+      it "createに成功すること" do
         sign_in @user
         post events_path, params: create_params
         expect(response).to(have_http_status(302))
@@ -59,7 +61,7 @@ RSpec.describe Event, type: :request do
     end
     context "paramsが異常な値の場合" do
       let(:title) { nil }
-      it 'createに失敗すること' do
+      it "createに失敗すること" do
         sign_in @user
         post events_path, params: create_params
         expect(response).to(have_http_status(302))
@@ -72,7 +74,7 @@ RSpec.describe Event, type: :request do
   describe "PUT /event/:id" do
     context "paramsが正常な値の場合" do
       let(:title) { "updateテスト" }
-      it 'updateに成功すること' do
+      it "updateに成功すること" do
         sign_in @user
         put event_path(event), params: update_params
         expect(response).to(have_http_status(302))
@@ -82,7 +84,7 @@ RSpec.describe Event, type: :request do
     end
     context "paramsが異常な値の場合" do
       let(:title) { nil }
-      it 'updateに失敗すること' do
+      it "updateに失敗すること" do
         sign_in @user
         put event_path(event), params: update_params
         expect(response).to(have_http_status(302))
@@ -93,7 +95,7 @@ RSpec.describe Event, type: :request do
   end
 
   describe "DELETE /event/:id" do
-    it 'destroyに成功すること' do
+    it "destroyに成功すること" do
       sign_in @user
       delete event_path(event)
       expect(response).to(have_http_status(302))

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NameKanaValidator < ActiveModel::EachValidator
   CODE_REGEX = /\A[ぁ-んァ-ヴ゛゜ー－( |　)+]*\z/.freeze
 

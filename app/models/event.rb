@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   include Discard::Model
   default_scope -> { kept }
@@ -14,7 +16,7 @@ class Event < ApplicationRecord
   validates :deadline_date, presence: true
 
 
-  #時間の矛盾を防ぐ
+  # 時間の矛盾を防ぐ
   def start_end_check
     if self.start_date.present? && self.end_date.present?
       errors.add(:end_date, "が開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
@@ -37,9 +39,9 @@ class Event < ApplicationRecord
 
   def notification_to_slack(message)
     notifier = Slack::Notifier.new(
-      ENV['SLACK_WEBHOOK_URL'],
+      ENV["SLACK_WEBHOOK_URL"],
       channel: "##{ENV['SLACK_CHANNEL']}",
-      username: 'イベント管理者'
+      username: "イベント管理者"
     )
     notifier.ping message
   end

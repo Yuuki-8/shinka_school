@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe UserClub, type: :model do
   before do
@@ -7,7 +9,7 @@ RSpec.describe UserClub, type: :model do
     @user_club = create(:user_club, user: user, club: club)
   end
 
-  describe 'アソシエーション' do
+  describe "アソシエーション" do
     it "紐づくuserが取得できていること" do
       expect(@user_club.user.present?).to(eq(true))
     end

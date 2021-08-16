@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PhoneNoValidator < ActiveModel::EachValidator
   CODE_REGEX = /^[0-9]{9,11}$/.freeze
-  CODE_MESSEG = '半角数字のみ ハイフン不要(11桁以下)'.freeze
+  CODE_MESSEG = "半角数字のみ ハイフン不要(11桁以下)"
 
   def validate_each(record, attribute, value)
     return if value.blank?

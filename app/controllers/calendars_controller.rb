@@ -1,18 +1,19 @@
-class CalendarsController < ApplicationController
+# frozen_string_literal: true
 
+class CalendarsController < ApplicationController
   def new
     @reservation = Reservation.new
-    render plain: render_to_string(partial: 'form_new', layout: false, locals: { reservation: @reservation })
+    render plain: render_to_string(partial: "form_new", layout: false, locals: { reservation: @reservation })
   end
 
   def show
     @reservation = nil
     if params[:class_name] == "Reservation"
       @reservation = Reservation.find(params[:id])
-      render plain: render_to_string(partial: 'form_reservation_edit', layout: false, locals: { reservation: @reservation })
+      render plain: render_to_string(partial: "form_reservation_edit", layout: false, locals: { reservation: @reservation })
     else
       @reservation = Event.find(params[:id])
-      render plain: render_to_string(partial: 'form_event_edit', layout: false, locals: { event: @reservation })
+      render plain: render_to_string(partial: "form_event_edit", layout: false, locals: { event: @reservation })
     end
   end
 
@@ -32,11 +33,11 @@ class CalendarsController < ApplicationController
     if @reservation.save
       respond_to do |format|
         format.html { redirect_to reservations_path }
-        format.js { render 'calenders/create.js.erb', layout: false}
+        format.js { render "calenders/create.js.erb", layout: false }
       end
     else
       respond_to do |format|
-        format.js { render 'calenders/error.js.erb', layout: false }
+        format.js { render "calenders/error.js.erb", layout: false }
       end
     end
   end
@@ -55,20 +56,20 @@ class CalendarsController < ApplicationController
     if @object.update(update_params)
       respond_to do |format|
         format.html { redirect_to reservations_path }
-        format.js { render 'calendars/update.js.erb', layout: false}
+        format.js { render "calendars/update.js.erb", layout: false }
       end
     else
       respond_to do |format|
-        format.js { render 'calendars/error.js.erb', layout: false }
+        format.js { render "calendars/error.js.erb", layout: false }
       end
     end
   end
 
   def params_reservation
-      params.require(:reservation).permit(:id, :user_id, :mentor_id, :title, :reservation_status, :start_date, :end_date)
+    params.require(:reservation).permit(:id, :user_id, :mentor_id, :title, :reservation_status, :start_date, :end_date)
   end
 
   def params_event
-      params.require(:event).permit(:id, :title, :place, :reservation_status, :start_date, :end_date)
+    params.require(:event).permit(:id, :title, :place, :reservation_status, :start_date, :end_date)
   end
 end

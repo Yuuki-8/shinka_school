@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def index
     @q = Event.ransack(params[:q])
@@ -63,8 +65,7 @@ class EventsController < ApplicationController
   end
 
   private
-
-  def event_params
-    params.require(:event).permit(:title, :description, :start_date, :end_date, :deadline_date, :place)
-  end
+    def event_params
+      params.require(:event).permit(:title, :description, :start_date, :end_date, :deadline_date, :place)
+    end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MentorSetting < ApplicationRecord
   belongs_to :mentor
   has_many :mentor_schedule_settings, dependent: :destroy

@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root 'home#index'
-  get 'home/show'
+  root "home#index"
+  get "home/show"
   devise_for :admins, controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions: "admins/sessions",
+    passwords: "admins/passwords",
+    registrations: "admins/registrations"
   }
   devise_for :mentors, controllers: {
-    sessions: 'mentors/sessions',
-    passwords: 'mentors/passwords',
-    registrations: 'mentors/registrations'
+    sessions: "mentors/sessions",
+    passwords: "mentors/passwords",
+    registrations: "mentors/registrations"
   }
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations'
+    sessions: "users/sessions",
+    passwords: "users/passwords",
+    registrations: "users/registrations"
   }
   resources :admins do
     get :home, on: :collection

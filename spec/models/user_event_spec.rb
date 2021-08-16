@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe UserEvent, type: :model do
   before do
@@ -7,7 +9,7 @@ RSpec.describe UserEvent, type: :model do
     @user_event = create(:user_event, user: user, event: event)
   end
 
-  describe 'アソシエーション' do
+  describe "アソシエーション" do
     it "紐づくuserが取得できていること" do
       expect(@user_event.user.present?).to(eq(true))
     end

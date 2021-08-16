@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClubsController < ApplicationController
   def index
     @q = Club.ransack(params[:q])
@@ -63,8 +65,7 @@ class ClubsController < ApplicationController
   end
 
   private
-
-  def club_params
-    params.require(:club).permit(:name, :description, :image)
-  end
+    def club_params
+      params.require(:club).permit(:name, :description, :image)
+    end
 end

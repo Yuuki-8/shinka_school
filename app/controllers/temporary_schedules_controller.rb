@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TemporarySchedulesController < ApplicationController
   before_action :set_resource, only: [:show, :update, :destroy, :create_reservation]
 
@@ -6,7 +8,7 @@ class TemporarySchedulesController < ApplicationController
   end
 
   def show
-    render plain: render_to_string(partial: 'form_temporary_schedule_edit', layout: false, locals: { temp_schedule: @temp_schedule })
+    render plain: render_to_string(partial: "form_temporary_schedule_edit", layout: false, locals: { temp_schedule: @temp_schedule })
   end
 
   def new
@@ -22,11 +24,11 @@ class TemporarySchedulesController < ApplicationController
     if @temp_schedule.update(params_temp_schedule)
       respond_to do |format|
         format.html { redirect_to temporary_schedules_path }
-        format.js { render 'temporary_schedules/update.js.erb', layout: false}
+        format.js { render "temporary_schedules/update.js.erb", layout: false }
       end
     else
       respond_to do |format|
-        format.js { render 'temporary_schedules/error.js.erb', layout: false }
+        format.js { render "temporary_schedules/error.js.erb", layout: false }
       end
     end
   end
@@ -35,11 +37,11 @@ class TemporarySchedulesController < ApplicationController
     if @temp_schedule.delete
       respond_to do |format|
         format.html { redirect_to temporary_schedules_path }
-        format.js { render 'temporary_schedules/destroy.js.erb', layout: false}
+        format.js { render "temporary_schedules/destroy.js.erb", layout: false }
       end
     else
       respond_to do |format|
-        format.js { render 'temporary_schedules/error.js.erb', layout: false }
+        format.js { render "temporary_schedules/error.js.erb", layout: false }
       end
     end
   end
@@ -65,8 +67,7 @@ class TemporarySchedulesController < ApplicationController
   end
 
   private
-
-  def set_resource
-    @temp_schedule = TemporarySchedule.find(params[:id])
-  end
+    def set_resource
+      @temp_schedule = TemporarySchedule.find(params[:id])
+    end
 end

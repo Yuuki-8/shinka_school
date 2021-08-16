@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :attendance do
-  desc '勤務終了時刻が入ってない場合にデフォルト値をセット'
+  desc "勤務終了時刻が入ってない場合にデフォルト値をセット"
   task end_time_add: :environment do
     puts "attendance:end_time_add... start"
     attendances = Attendance.where(end_time: nil)

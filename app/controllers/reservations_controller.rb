@@ -1,5 +1,6 @@
-class ReservationsController < ApplicationController
+# frozen_string_literal: true
 
+class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.where(mentor: current_mentor, reservation_status: 0)
   end

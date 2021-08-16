@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Job, type: :model do
   before do
@@ -7,20 +9,20 @@ RSpec.describe Job, type: :model do
     create(:mentor, job: @job)
   end
 
-  describe 'バリデーション' do
-    it '全ての値が正しく設定されていれば @job.valid? が trueになること' do
+  describe "バリデーション" do
+    it "全ての値が正しく設定されていれば @job.valid? が trueになること" do
       expect(@job.valid?).to(eq(true))
     end
 
     describe "name" do
-      it 'nameが空だと @job.valid? が falseになること' do
-        @job.name = ''
+      it "nameが空だと @job.valid? が falseになること" do
+        @job.name = ""
         expect(@job.valid?).to(eq(false))
       end
     end
   end
 
-  describe 'アソシエーション' do
+  describe "アソシエーション" do
     it "紐づくuserが取得できていること" do
       expect(@job.users.present?).to(eq(true))
     end

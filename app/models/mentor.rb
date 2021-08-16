@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "validators/email_format_validator"
 require "validators/name_kana_validator"
 require "validators/phone_no_validator"

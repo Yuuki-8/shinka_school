@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Attendance, type: :request do
   before do
@@ -19,13 +21,13 @@ RSpec.describe Attendance, type: :request do
       attendance: {
         admin_id: @admin.id,
         start_time: attendance.start_time,
-        end_time: '2021/8/1 19:00',
+        end_time: "2021/8/1 19:00",
       }
     }
   end
 
   describe "GET /attendances/" do
-    it 'index画面の表示に成功すること' do
+    it "index画面の表示に成功すること" do
       sign_in @admin
       get attendances_path
       expect(response).to(have_http_status(200))
@@ -33,7 +35,7 @@ RSpec.describe Attendance, type: :request do
   end
 
   describe "GET /attendances/:id" do
-    it 'show画面の表示に成功すること' do
+    it "show画面の表示に成功すること" do
       sign_in @admin
       get attendances_path(attendance)
       expect(response).to(have_http_status(200))
@@ -41,7 +43,7 @@ RSpec.describe Attendance, type: :request do
   end
 
   describe "POST /attendances" do
-    it 'createに成功すること' do
+    it "createに成功すること" do
       sign_in @admin
       post attendances_path, params: create_params
       expect(response).to(have_http_status(200))
@@ -49,7 +51,7 @@ RSpec.describe Attendance, type: :request do
   end
 
   describe "PUT /attendances/:id" do
-    it 'updateに成功すること' do
+    it "updateに成功すること" do
       sign_in @admin
       post attendances_path(attendance), params: update_params
       expect(response).to(have_http_status(200))

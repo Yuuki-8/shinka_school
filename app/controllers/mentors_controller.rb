@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MentorsController < ApplicationController
   before_action :set_resource, only: [:show]
 
@@ -17,8 +19,7 @@ class MentorsController < ApplicationController
   end
 
   private
-
-  def set_resource
-    @mentor = Mentor.find(params[:id])
-  end
+    def set_resource
+      @mentor = Mentor.find(params[:id])
+    end
 end

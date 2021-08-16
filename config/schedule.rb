@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -19,10 +21,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, 'log/crontab.log'
+set :output, "log/crontab.log"
 set :environment, :development
 
-every 1.day, at: '0:00 am' do
+every 1.day, at: "0:00 am" do
   rake "attendance:end_time_add"
 end
 
@@ -31,6 +33,6 @@ every 1.minute do
   rake "notification:event_before_one_hour_to_slack"
 end
 
-every '0 0 1 * *' do
+every "0 0 1 * *" do
   rake "temporary_schedule:batch_make_and_delete_schedules"
 end

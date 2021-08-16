@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Club, type: :request do
   before do
@@ -6,7 +8,7 @@ RSpec.describe Club, type: :request do
   end
 
   let(:club) { create(:club) }
-  let(:user_club) { create(:user_club, club: club, user: @user)}
+  let(:user_club) { create(:user_club, club: club, user: @user) }
   let(:create_params) do
     {
       club: {
@@ -28,7 +30,7 @@ RSpec.describe Club, type: :request do
   end
 
   describe "GET /clubs/" do
-    it 'index画面の表示に成功すること' do
+    it "index画面の表示に成功すること" do
       sign_in @user
       get clubs_path
       expect(response).to(have_http_status(200))
@@ -36,7 +38,7 @@ RSpec.describe Club, type: :request do
   end
 
   describe "GET /clubs/:id" do
-    it 'show画面の表示に成功すること' do
+    it "show画面の表示に成功すること" do
       sign_in @user
       get clubs_path(club)
       expect(response).to(have_http_status(200))
@@ -45,7 +47,7 @@ RSpec.describe Club, type: :request do
 
   describe "POST /clubs" do
     context "paramsが正常な値の場合" do
-      it 'createに成功すること' do
+      it "createに成功すること" do
         sign_in @user
         post clubs_path, params: create_params
         expect(response).to(have_http_status(302))
@@ -55,7 +57,7 @@ RSpec.describe Club, type: :request do
     end
     context "paramsが異常な値の場合" do
       let(:description) { nil }
-      it 'createに失敗すること' do
+      it "createに失敗すること" do
         sign_in @user
         post clubs_path, params: create_params
         expect(response).to(have_http_status(302))
@@ -68,7 +70,7 @@ RSpec.describe Club, type: :request do
   describe "PUT /club/:id" do
     context "paramsが正常な値の場合" do
       let(:description) { "updateテスト" }
-      it 'updateに成功すること' do
+      it "updateに成功すること" do
         sign_in @user
         put club_path(club), params: update_params
         expect(response).to(have_http_status(302))
@@ -78,7 +80,7 @@ RSpec.describe Club, type: :request do
     end
     context "paramsが異常な値の場合" do
       let(:description) { nil }
-      it 'updateに失敗すること' do
+      it "updateに失敗すること" do
         sign_in @user
         put club_path(club), params: update_params
         expect(response).to(have_http_status(302))
@@ -89,7 +91,7 @@ RSpec.describe Club, type: :request do
   end
 
   describe "DELETE /club/:id" do
-    it 'destroyに成功すること' do
+    it "destroyに成功すること" do
       sign_in @user
       delete club_path(club)
       expect(response).to(have_http_status(302))
