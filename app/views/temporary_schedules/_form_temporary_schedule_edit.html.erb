@@ -1,0 +1,16 @@
+<div class="row">
+  <%= form_with(model: @temp_schedule, url: temporary_schedule_path, remote: true) do |f| %>
+    <%= render 'shared/error_messages', resource: f.object %>
+    <div class="form-group">
+      <%= f.label :start_time,"開始時刻", {class:'control-label'}%>
+      <%= f.datetime_select :start_time, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
+    </div>
+      <br>
+    <div class="form-group">
+      <%= f.label :end_time,"終了時刻", {class:'control-label'}%>
+      <%= f.datetime_select :end_time, { default: Date.today + 0.hours + 00.minutes, minute_step: 10, use_month_numbers: true }, class: 'form-control bootstrap-date mb-3' %>
+    </div>
+
+    <%= f.submit "更新",   class: "btn btn-raised btn-primary m-2" %><%= link_to '削除', temporary_schedule_path(f.object), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-raised btn-danger m-3' %>
+  <% end %>
+</div>

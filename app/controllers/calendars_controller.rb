@@ -23,7 +23,7 @@ class CalendarsController < ApplicationController
     elsif current_mentor?
       @events = Reservation.where(mentor_id: current_mentor.id, reservation_status: 1)
     elsif current_admin?
-      @events = Reservation.where(admin_id: current_admin.id)
+      @events = Reservation.all.to_a + Event.all.to_a
     end
   end
 

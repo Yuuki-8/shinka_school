@@ -4,6 +4,7 @@ class Reservation < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :mentor, optional: true
 
+  validate  :start_check
   validate  :start_end_check
   validates :title, presence: true
   validates :start_date, presence: true
@@ -17,6 +18,10 @@ class Reservation < ApplicationRecord
     if self.start_date.present? && self.end_date.present?
       errors.add(:end_date, "が勤務開始時刻を上回っています。正しく記入してください。") if self.start_date > self.end_date
     end
+  end
+
+  def start_check
+    errors.add(:start_date, "予約時刻は本日より1週間以上先の日付を選択してください") if self.start_date.present? && self.start_date <= Date.today.since(7.days)
   end
 
   def set_status
