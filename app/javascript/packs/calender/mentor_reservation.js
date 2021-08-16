@@ -1,4 +1,3 @@
-//インストールしたファイルたちを呼び出します。
 import { Calendar } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid';
@@ -6,7 +5,6 @@ import googleCalendarApi from '@fullcalendar/google-calendar';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 
-//<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作っていきます。
 document.addEventListener('turbolinks:load', function () {
     var calendarEl = document.getElementById('calendar');
 
@@ -63,7 +61,7 @@ document.addEventListener('turbolinks:load', function () {
         footerToolbar: {
             right: "prev,next"
         },
-        navLinks: true, // can click day/week names to navigate views
+        navLinks: true,
         businessHours: {
             startTime: '09:00',
             endTime: '21:00'
@@ -133,16 +131,10 @@ document.addEventListener('turbolinks:load', function () {
                 alert("failed");
             });
         },
-        eventClassNames: function(arg){
-            //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
-        }
-
     });
     //カレンダー表示
     calendar.render();
 
-    //成功、失敗modalを閉じたときに予定を再更新してくれます
-    //これがないと追加しても自動更新されません
     $(".error").on("click", function(){
         calendar.refetchEvents();
     });
