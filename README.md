@@ -1,4 +1,4 @@
-# sinka_reservation
+# sinka_school
 
 簡易的な予約システムを基にしたSINKA SCHOOLの教材です。
 このシステムを基に、エンジニアが知っておくべき最低限の技術を学んでいきましょう。
@@ -25,7 +25,7 @@
 
 ```bash
 git clone リポジトリ名 # リポジトリからコピーしてきます
-cd sinka_reservation # コピーしてきたディレクトリに移動します
+cd sinka_school # コピーしてきたディレクトリに移動します
 docker compose build # dockerイメージを作成します
 docker compose up -d # コンテナを起動します
 docker compose run web rails db:create # dbを作成します
