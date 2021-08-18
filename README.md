@@ -33,6 +33,10 @@ docker compose run web rails db:apply # schemaを基にテーブルを作成し�
 docker compose run web rails db:apply RAILS_ENV=test # 上記ではdevelopmentにテーブルを作成しますが、こちらではtestに作成します。
 docker compose run web rails db:seed # seedファイルに記載してあるデータをinsertします。
 docker compose up -d # 途中でエラーが起きた場合はserverが立ち上がっていないと思うので再度実行しましょう。
+
+# commit時に自動でrubocopを動かす設定をします。以下の2つのコマンドも実行してください。
+docker compose exec web overcommit --install
+docker compose exec web overcommit --sign
 ```
 
 # Note
