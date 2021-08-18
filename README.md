@@ -32,10 +32,12 @@ docker compose run web rails db:create # dbを作成します
 docker compose run web rails db:apply # schemaを基にテーブルを作成します
 docker compose run web rails db:apply RAILS_ENV=test # 上記ではdevelopmentにテーブルを作成しますが、こちらではtestに作成します。
 docker compose run web rails db:seed # seedファイルに記載してあるデータをinsertします。
+docker compose up -d # 途中でエラーが起きた場合はserverが立ち上がっていないと思うので再度実行しましょう。
 ```
 
 # Note
 環境構築で所々エラーが出ることがあります。想定されるものは以下に記載しておきますので参考にしてください。
+* bind source path does not exist: /*/sinka_school/mysql-confd（ mkdir mysql-confd ）
 * docker compose upでPlease run `yarn install --check-files`が出る（https://qiita.com/ryoji2405/items/1de1f2e9e206382c4aa5）
 * Plugin caching_sha2_password could not be loaded...のエラー（https://qiita.com/tomo-IR/items/224d33f14561e759dd16）
 
