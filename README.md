@@ -1,4 +1,4 @@
-# sinka_reservation
+# sinka_school
 
 簡易的な予約システムを基にしたSINKA SCHOOLの教材です。
 このシステムを基に、エンジニアが知っておくべき最低限の技術を学んでいきましょう。

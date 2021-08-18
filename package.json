@@ -1,5 +1,5 @@
 {
-  "name": "sinka_reservation",
+  "name":"sinka_school",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
