@@ -13,6 +13,8 @@ namespace :temporary_schedule do
       beginning_month = Date.today.beginning_of_month # 開始月の月初
       end_month = beginning_month.since(3.months).end_of_month.to_date # 3ヶ月後の月末
       (beginning_month..end_month).each do |date|
+        next if settings[MentorScheduleSetting.weekday_codes.invert[date.wday]].nil? # デフォルト設定がない曜日はskip
+
         settings[MentorScheduleSetting.weekday_codes.invert[date.wday]].map do |setting|
           setting.start_time.to_i.step(setting.end_time.to_i, 3600).map { |m| Time.zone.at(m).strftime("%F %T") }.map do |time|
             next if time.in_time_zone == setting.end_time
