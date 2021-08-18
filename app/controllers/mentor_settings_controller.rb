@@ -21,7 +21,8 @@ class MentorSettingsController < ApplicationController
   end
 
   def create
-    if @mentor_setting.save
+    mentor_setting = MentorSetting.new(setting_params)
+    if mentor_setting.save
       flash[:notice] = "メンタリング可能時刻を設定しました"
       redirect_to controller: :mentor_settings, action: :index
     else
