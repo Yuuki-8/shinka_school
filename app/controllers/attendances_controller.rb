@@ -2,7 +2,7 @@
 
 class AttendancesController < ApplicationController
   def index
-    @attendance = current_admin.attendances.today_attendance_scope.first
+    @attendance = current_admin.attendances.where(start_time: Time.zone.today).first
   end
 
   def show
@@ -24,7 +24,8 @@ class AttendancesController < ApplicationController
     @attendance = current_admin.attendances.build(start_time: Time.zone.now)
     Attendance.transaction do
       @attendance.save!
-      render action: :index
+      flash[:notice] = "出勤を確認しました！"
+      redirect_to attendances_path
     end
   end
 
@@ -32,7 +33,8 @@ class AttendancesController < ApplicationController
     @attendance = current_admin.attendances.today_attendance_scope.first
     Attendance.transaction do
       @attendance.update!(end_time: Time.zone.now)
-      render action: :index
+      flash[:notice] = "退勤を確認しました！お疲れ様でした"
+      redirect_to attendances_path
     end
   end
 
