@@ -34,14 +34,6 @@ Rails.application.routes.draw do
   end
   resources :calendars
   resources :attendances
-  resources :events do
-    post :join_to_event, on: :member
-    delete :undo_from_event, on: :member
-  end
-  resources :clubs do
-    post :join_to_club, on: :member
-    delete :undo_from_club, on: :member
-  end
   resources :mentor_settings
   resources :temporary_schedules do
     get :schedule_of_mentor, on: :member

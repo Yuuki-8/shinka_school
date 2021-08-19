@@ -14,10 +14,6 @@ class User < ApplicationRecord
   belongs_to :pref, optional: true
   has_many :reservations
   has_many :mentors, through: :reservations
-  has_many :user_events
-  has_many :events, through: :user_events
-  has_many :user_clubs
-  has_many :clubs, through: :user_clubs
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :name_kana, presence: true, format: { with: NameKanaValidator::CODE_REGEX, multiline: true }, length: { maximum: 100 }

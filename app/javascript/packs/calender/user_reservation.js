@@ -116,21 +116,21 @@ document.addEventListener('turbolinks:load', function () {
         //         alert("failed");
         //     });
         // },
-        eventClick: function(info){
-            const instanceId = info.event._def.publicId
-            const className = info.event.extendedProps.class_name
-            $.ajax({
-                type: 'GET',
-                url: `/calendars/${instanceId}`,
-                data: { class_name: className},
-            }).done(function (res) {
-                $('.modal-body').html(res);
-                $('#edit-modal').fadeIn();
-            }).fail(function (result) {
-                // 失敗処理
-                alert("failed");
-            });
-        },
+        // eventClick: function(info){
+        //     const instanceId = info.event._def.publicId
+        //     const className = info.event.extendedProps.class_name
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: `/calendars/${instanceId}`,
+        //         data: { class_name: className},
+        //     }).done(function (res) {
+        //         $('.modal-body').html(res);
+        //         $('#edit-modal').fadeIn();
+        //     }).fail(function (result) {
+        //         // 失敗処理
+        //         alert("failed");
+        //     });
+        // },
     });
     //カレンダー表示
     calendar.render();

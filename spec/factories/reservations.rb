@@ -3,8 +3,8 @@
 FactoryBot.define do
   factory :reservation do
     sequence(:title) { |n| "イベント_#{n}" }
-    start_date { "2021/8/1 10:00" }
-    end_date { "2021/8/1 12:00" }
+    start_date { Date.today.since(8.days) }
+    end_date { start_date.since(2.hours) }
     reservation_status { 0 }
 
     association :user
