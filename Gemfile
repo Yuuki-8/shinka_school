@@ -26,30 +26,34 @@ gem "jbuilder", "~> 2.7"
 
 # 環境変数を管理
 gem "dotenv-rails"
+
 # セキュリティ高めのログイン機能
 gem "devise"
+
 # migrationより簡単なスキーマ管理
 gem "ridgepole"
+
 # グラフ化できるgem
 gem "chartkick"
+
 # 画像アップロード機能
 gem "carrierwave"
+
 # 画像のresize機能
 gem "mini_magick"
+
 # cron機能
 gem "whenever", require: false
+
 # 日本語化
 gem "rails-i18n"
-# slackへの通知
-gem "slack-notifier"
-# ページネーション機能
-gem "kaminari"
-# 検索機能
-gem "ransack"
+
 # 論理削除機能
 gem "discard"
+
 # 動的フォーム
 gem "cocoon"
+
 # 複数レコード一括登録
 gem "activerecord-import"
 
