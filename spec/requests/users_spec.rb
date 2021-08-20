@@ -7,9 +7,9 @@ RSpec.describe User, type: :request do
   let(:user_params) { attributes_for(:user, gender: "male") }
   let(:invalid_user_params) { attributes_for(:user, name: "", gender: "male") }
 
-  describe "GET /users/" do
-    it "index画面の表示に成功すること" do
-      get users_path
+  describe "GET /users/home" do
+    it "home画面の表示に成功すること" do
+      get home_users_path
       expect(response).to(have_http_status(200))
     end
   end

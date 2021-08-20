@@ -4,8 +4,7 @@ class MentorsController < ApplicationController
   before_action :set_resource, only: [:show]
 
   def index
-    @q = Mentor.ransack(params[:q])
-    @mentors = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(5)
+    @mentors = Mentor.all
   end
 
   def show

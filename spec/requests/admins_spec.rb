@@ -7,9 +7,9 @@ RSpec.describe Admin, type: :request do
   let(:admin_params) { attributes_for(:admin, gender: "male") }
   let(:invalid_admin_params) { attributes_for(:admin, name: "", gender: "male") }
 
-  describe "GET /admins/" do
-    it "index画面の表示に成功すること" do
-      get admins_path
+  describe "GET /admins/home" do
+    it "home画面の表示に成功すること" do
+      get home_admins_path
       expect(response).to(have_http_status(200))
     end
   end
