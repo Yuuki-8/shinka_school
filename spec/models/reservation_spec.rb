@@ -24,8 +24,8 @@ RSpec.describe Reservation, type: :model do
     describe "start_end_check" do
       context "start_dateよりもend_dateの方が未来の時刻である場合" do
         it "@reservation.valid? はtrueになること" do
-          @reservation.start_date = Date.today.since(8.days)
-          @reservation.end_date = @reservation.start_date.since(2.hours)
+          @reservation.start_date = "2021/8/1 10:00"
+          @reservation.end_date = "2021/8/1 12:00"
           expect(@reservation.valid?).to(eq(true))
         end
       end

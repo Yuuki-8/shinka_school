@@ -46,7 +46,7 @@ RSpec.describe Attendance, type: :request do
     it "createに成功すること" do
       sign_in @admin
       post attendances_path, params: create_params
-      expect(response).to(have_http_status(200))
+      expect(response).to(have_http_status(302))
     end
   end
 
@@ -54,7 +54,7 @@ RSpec.describe Attendance, type: :request do
     it "updateに成功すること" do
       sign_in @admin
       post attendances_path(attendance), params: update_params
-      expect(response).to(have_http_status(200))
+      expect(response).to(have_http_status(302))
     end
   end
 end
