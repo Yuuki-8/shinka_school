@@ -2,7 +2,7 @@
 
 class AttendancesController < ApplicationController
   def index
-    @attendance = current_admin.attendances.where(start_time: Time.zone.today).first
+    @attendance = current_admin.attendances.where(start_time: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day).first
   end
 
   def show
