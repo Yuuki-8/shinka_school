@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class EventsController < ApplicationController
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_action :set_resource, only: [:show,:edit,:update,:destroy]
 
   def index
     @events = Event.all
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
       redirect_to controller: :events, action: :index
     else
       flash[:notice] = "イベント情報を更新できませんでした"
-      redirect_to controller: :events, action: :edit, id: @event.id
+      redirect_to controller: :events,action: :edit, id: @event.id
     end
   end
 
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     else
       flash[:notice] = "イベント情報を削除できませんでした"
     end
-    redirect_to controller: :events, action: :index
+    redirect_to controller: :events,action: :index
   end
 
   private
