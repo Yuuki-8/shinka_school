@@ -47,6 +47,13 @@ class ClubsController < ApplicationController
     redirect_to controller: :clubs, action: :index
   end
 
+  def join_to_club
+    club = Club.find(params[:id])
+    user_club = club.user_clubs.build(user: current_user)
+    user_club.save
+    redirect_to controller: :clubs, action: :show
+  end
+
   private
     def club_params
       params.require(:club).permit(:name, :description, :image)
