@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'club/index'
   root "home#index"
   get "home/show"
   devise_for :admins, controllers: {
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :clubs do
     post :join_to_club, on: :member
+    delete :cancel_to_club,on: :member
   end
 
 end

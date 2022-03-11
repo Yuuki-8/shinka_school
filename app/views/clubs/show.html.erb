@@ -17,7 +17,7 @@
       <td><%= @club.description %></td>
       <td><%= @club.users.count %></td>
       <% if @club.user_clubs.where(user: current_user).present? %>
-        <td><%= link_to '編集', edit_club_path(@club), class: 'btn btn-success btn-md' %></td>
+        <td><%= link_to '参加取消', cancel_to_club_club_path(@club), method: :delete, class: 'btn btn-danger btn-md' %></td>
       <% else %>
         <td><%= link_to '一覧', clubs_path, class: 'btn btn-success btn-md' %></td>
         <td><%= link_to '参加する', join_to_club_club_path(@club), method: :post, class: 'btn btn-success btn-md' %></td>
