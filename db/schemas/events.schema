@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+
+# vi: set ft=ruby :
+create_table :events, options:"ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+
+    t.string :title
+
+    t.string :place
+
+    t.string :description
+
+    t.string :image
+
+    t.datetime :start_date
+
+    t.datetime :end_date
+
+    t.datetime :deadline_date
+
+    t.datetime :discarded_at
+
+    t.boolean :is_before_one_hour_notification, default: false
+
+    t.boolean :is_just_notification, default: false
+
+    t.datetime :created_at
+
+    t.datetime :updated_at
+
+    end
