@@ -47,6 +47,19 @@ class EventsController < ApplicationController
     redirect_to controller: :events,action: :index
   end
 
+  def join_to_event
+    event = Event.find(params[:id])
+    user_event = event.user_events.build(user: current_user)
+    user_event.save
+    redirect_to controller: :events, action: :show
+  end
+
+  def cancel_to_event
+    user_event = UserEvent.find_by(event: params[:id],user: current_user.id)
+    user_event.destroy
+    redirect_to controller: :events, action: :index
+  end
+
   private
     def event_params
       params.require(:event).permit(:title,:place, :description, :image)

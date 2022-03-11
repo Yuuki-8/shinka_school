@@ -41,5 +41,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :clubs
-  resources :events
+  resources :events do
+    post :join_to_event, on: :member
+    delete :cancel_to_event, on: :member
+  end
 end

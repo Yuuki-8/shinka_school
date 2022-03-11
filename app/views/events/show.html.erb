@@ -1,55 +1,44 @@
 <h1>イベント詳細</h1>
-
 <br>
-
 <table class="table">
-
   <thead>
-
     <tr align="center" valign="middle">
-
       <th>イベント画像</th>
-
       <th>イベント名</th>
-
       <th>場所</th>
-
       <th>活動内容</th>
-
       <th>参加者数</th>
-
-      <th colspan="1"></th>
-
+      <th colspan="2"></th>
     </tr>
-
  </thead>
-
  <tbody>
-
     <tr align="center" valign="middle">
-
       <td><img height="60" src="<%=h @event.image_url %>"/></td>
-
       <td><%= @event.title %></td>
-
       <td><%= @event.place %></td>
-
       <td><%= @event.description %></td>
-
       <td><%= @event.users.count %></td>
-
       <% if @event.user_events.where(user: current_user).present? %>
-
-        <td><%= link_to '編集', edit_event_path(@event), class: 'btn btn-success btn-md' %></td>
-
+        <td><%= link_to '参加取消', cancel_to_event_event_path(@event), method: :delete, class: 'btn btn-danger btn-md' %></td>
       <% else %>
-
         <td><%= link_to '一覧', events_path, class: 'btn btn-success btn-md' %></td>
-
+        <td><%= link_to '参加する', join_to_event_event_path(@event), method: :post, class: 'btn btn-success btn-md' %></td>
       <% end %>
-
     </tr>
-
   </tbody>
-
+</table>
+</table>
+<br>
+<table class="table">
+  <thead style="background-color:#ccc;">
+    <tr align="center" valign="middle">
+      <th>参加者一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.users.each do |user| %>
+      <tr align="center" valign="middle">
+        <td><%= user.name %></td>
+    <% end %>
+  </tbody>
 </table>
