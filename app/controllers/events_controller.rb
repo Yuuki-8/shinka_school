@@ -51,12 +51,14 @@ class EventsController < ApplicationController
     event = Event.find(params[:id])
     user_event = event.user_events.build(user: current_user)
     user_event.save
+    flash[:notice] = "参加しました"
     redirect_to controller: :events, action: :show
   end
 
   def cancel_to_event
     user_event = UserEvent.find_by(event: params[:id],user: current_user.id)
     user_event.destroy
+    flash[:notice] = "キャンセルしました"
     redirect_to controller: :events, action: :index
   end
 
