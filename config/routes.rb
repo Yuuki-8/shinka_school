@@ -44,5 +44,8 @@ Rails.application.routes.draw do
     post :join_to_club, on: :member
     delete :cancel_to_club,on: :member
   end
-
+  resources :events do
+    post :join_to_event, on: :member
+    delete :cancel_to_event, on: :member
+  end
 end

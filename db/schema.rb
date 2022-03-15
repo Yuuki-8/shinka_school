@@ -43,6 +43,21 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at"
   end
 
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "title"
+    t.string "place"
+    t.string "description"
+    t.string "image"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "deadline_date"
+    t.datetime "discarded_at"
+    t.boolean "is_before_one_hour_notification", default: false
+    t.boolean "is_just_notification", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
@@ -125,6 +140,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_user_clubs_on_user_id"
   end
 
+  create_table "user_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["user_id"], name: "index_user_events_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "job_id"
     t.integer "pref_id"
@@ -155,4 +179,6 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "temporary_schedules", "mentors"
   add_foreign_key "user_clubs", "clubs"
   add_foreign_key "user_clubs", "users"
+  add_foreign_key "user_events", "events"
+  add_foreign_key "user_events", "users"
 end
