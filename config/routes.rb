@@ -40,7 +40,10 @@ Rails.application.routes.draw do
     put :create_reservation, on: :member
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :clubs
+  resources :clubs do
+    post :join_to_club, on: :member
+    delete :cancel_to_club,on: :member
+  end
   resources :events do
     post :join_to_event, on: :member
     delete :cancel_to_event, on: :member

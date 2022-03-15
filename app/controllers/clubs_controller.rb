@@ -47,6 +47,21 @@ class ClubsController < ApplicationController
     redirect_to controller: :clubs,action: :index
   end
 
+  def join_to_club
+    club = Club.find(params[:id])
+    user_club = club.user_clubs.build(user: current_user)
+    user_club.save
+    flash[:notice] = "参加しました"
+    redirect_to controller: :clubs, action: :show
+  end
+
+  def cancel_to_club
+    user_club = UserClub.find_by(club: params[:id],user: current_user.id)
+    user_club.destroy
+    flash[:notice] = "キャンセルしました"
+    redirect_to controller: :clubs, action: :index
+  end
+
   private
     def club_params
       params.require(:club).permit(:name,:description,:image)
