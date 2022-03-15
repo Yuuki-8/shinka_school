@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'club/index'
   root "home#index"
   get "home/show"
   devise_for :admins, controllers: {
