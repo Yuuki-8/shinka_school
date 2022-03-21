@@ -57,6 +57,8 @@ gem "cocoon"
 # 複数レコード一括登録
 gem "activerecord-import"
 
+gem "ransack"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
