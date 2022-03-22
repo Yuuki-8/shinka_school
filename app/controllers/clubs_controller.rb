@@ -3,7 +3,8 @@ class ClubsController < ApplicationController
   before_action :set_resource,only: [:show,:edit,:update,:destroy]
 
   def index
-    @clubs = Club.all
+    @q = Club.ransack(params[:q])
+    @clubs = @q.result(distinct: true)
   end
 
   def show
