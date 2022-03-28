@@ -28,5 +28,6 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @events, theme: 'twitter-bootstrap-4'%>
 <br>
 <%= link_to 'イベント作成', new_event_path, class: 'btn btn-success btn-lg m-5' %>
