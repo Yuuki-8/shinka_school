@@ -59,6 +59,10 @@ gem "activerecord-import"
 
 gem "ransack"
 
+gem "kaminari"
+
+gem 'bootstrap4-kaminari-views'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
