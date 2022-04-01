@@ -63,6 +63,9 @@ gem "kaminari"
 
 gem 'bootstrap4-kaminari-views'
 
+gem "whenever"
+
+gem "slack-notifier"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
