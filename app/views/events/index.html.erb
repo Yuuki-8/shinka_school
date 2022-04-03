@@ -20,14 +20,14 @@
         <td><%= event.title %></td>
         <td><%= event.place %></td>
 				<td><%= event.description %></td>
-        <td><%= l event.start_date %></td>
-        <td><%= l event.end_date %></td>
-				<td><%= l event.deadline_date %></td>
+        <td><%= event.start_date.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= event.end_date.strftime("%Y/%m/%d %H:%M") %></td>
+				<td><%= event.deadline_date.strftime("%Y/%m/%d %H:%M") %></td>
         <td><%= link_to '詳細', event_path(event), action: :get, class: 'btn btn-success btn-sm' %></td>
         <% if event.users.include?(current_user) %>
           <td><%= link_to '編集', edit_event_path(event), class: 'btn btn-success btn-sm' %></td>
         <% end %>
-        <td><%= link_to '削除', event_path(event), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
+          <td><%= link_to '削除', event_path(event), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-success btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

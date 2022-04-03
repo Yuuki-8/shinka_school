@@ -325,6 +325,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import
+  activesupport
   bootsnap (>= 1.4.2)
   bootstrap4-kaminari-views
   byebug

@@ -87,8 +87,3 @@ ja:
   errors:
     messages:
       not_saved: "不適切な値があります。確認してください。"
-
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"

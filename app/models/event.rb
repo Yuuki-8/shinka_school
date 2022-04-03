@@ -25,6 +25,9 @@ class Event < ApplicationRecord
   def notification_event_just_to_slack
     notification_to_slack("イベント名：#{self.title}は参加者の募集を締め切りました。http://localhost:3000/events/#{self.id}")
   end
+  def notification_event_before_to_slack
+    notification_to_slack("イベント名：#{self.title}は参加者の募集を締め切り3時間前です。http://localhost:3000/events/#{self.id}")
+  end
   def notification_to_slack(message)
     notifier = Slack::Notifier.new( # この中で通知内容の設定
     ENV["SLACK_WEBHOOK_URL"], #slackと連携するためのurl
