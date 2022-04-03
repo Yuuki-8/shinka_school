@@ -26,6 +26,6 @@ every 1.minute do
   rake "notification:event_just_to_slack"
 end
 
-every 3.minute do
+every 1.hours do
   rake "notification:event_before_to_slack"
 end
