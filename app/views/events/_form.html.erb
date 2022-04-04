@@ -1,52 +1,34 @@
 <div class="row">
-
   <%= form_with(model: @event) do |f| %>
-
     <%= render 'shared/error_messages', resource: f.object %>
-
-
-
     <div class="form-group">
-
       <%= f.label :title, 'イベント名' %>
-
       <%= f.text_field :title, class: 'form-control' %>
-
     </div>
-
     <div class="form-group">
-
-      <%= f.label :place, '場所' %>
-
+      <%= f.label :place, '開催場所' %>
       <%= f.text_field :place, class: 'form-control' %>
-
     </div>
-
-
-
-    <div class="form-group">
-
+		<div class="form-group">
       <%= f.label :description, '活動内容' %>
-
       <%= f.text_field :description, class: 'form-control' %>
-
     </div>
-
-
-
     <div class="form-group">
-
-      <%= f.label :image, 'イベントイメージ' %><br />
-
-      <%= f.file_field :image,　class: "form-control mb-3", accept: 'image/*' %>
-
+      <%= f.label :start_date, 'イベント開始時間' %>
+      <%= f.datetime_field :start_date, class: 'form-control'%>
     </div>
-
-
-
+    <div class="form-group">
+      <%= f.label :end_date, 'イベント終了時間' %><br />
+      <%= f.datetime_field :end_date, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :deadline_date, '募集締切日' %><br />
+      <%= f.datetime_field :deadline_date, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, 'イベントイメージ' %><br />
+      <%= f.file_field :image, class: "form-control mb-3", accept: 'image/*' %>
+    </div>
     <%= f.submit "Save", class: "btn btn-success btn-lg m-5" %><span>　　　</span><%= link_to '一覧', events_path, class: 'btn btn-success btn-lg' %>
-
   <% end %>
-
 </div>
-
