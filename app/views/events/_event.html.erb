@@ -1,0 +1,4 @@
+<li class="event"><%= link_to event.title, event_path(event) %></li>
+<li class="event"><%= link_to event.place, event_path(event) %></li>
+<li class="event"><%= link_to event.start_date.strftime("%Y/%m/%d %H:%M"), event_path(event) %></li>
+<li class="event"><%= link_to event.end_date.strftime("%Y/%m/%d %H:%M"), event_path(event) %></li>

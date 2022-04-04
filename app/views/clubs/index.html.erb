@@ -29,3 +29,11 @@
 </table>
 <br>
 <%= link_to 'サークル作成', new_club_path, class: 'btn btn-success btn-lg m-5' %>
+
+<div class="contents border m-5">
+  <h2>ajax用サークル名検索</h2>
+  <%= text_field_tag :name, '', class: 'js-text_field', placeholder: 'タイトルを入力してください' %>
+  <ul class="js-clubs">
+    <%= render @clubs %><!-- 部分テンプレートを呼び出し-->
+  </ul>
+</div>

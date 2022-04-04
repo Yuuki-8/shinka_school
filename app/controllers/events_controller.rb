@@ -64,6 +64,21 @@ class EventsController < ApplicationController
     redirect_to controller: :events, action: :index
   end
 
+  def search
+    if params[:title]
+      @events = Event.where("title LIKE(?)", "%#{params[:title]}%")
+    elsif params[:place]
+      @events = Event.where("place LIKE(?)", "%#{params[:place]}%")
+    elsif params[:start_date]
+      @events = Event.where("start_date LIKE(?)", "%#{params[:start_date]}%")
+    else
+      @events = Event.where("end_date LIKE(?)", "%#{params[:end_date]}%")
+    end
+    respond_to do |format|
+      format.json { render json: @events }
+    end
+  end
+
   private
     def event_params
       params.require(:event).permit(:title,:place,:description,:start_date,:end_date,:deadline_date,:image)
