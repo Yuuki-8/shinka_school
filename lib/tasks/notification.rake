@@ -6,7 +6,7 @@ namespace :notification do
     events = Event.where("deadline_date <= ?", Time.zone.now)
     puts "対象件数：#{events.count}件"
     if events.present?
-	    events.map do |event|
+      events.map do |event|
         unless event.is_just_notification
           event.notification_event_just_to_slack # 処理実行
           event.is_just_notification = true
@@ -23,7 +23,7 @@ namespace :notification do
     events = Event.where("deadline_date = ?", Time.zone.now.since(3.hours))
     puts "対象件数：#{events.count}件"
     if events.present?
-	    events.map do |event|
+      events.map do |event|
         unless event.is_before_one_hour_notification
           event.notification_event_before_to_slack # 処理実行
           event.is_before_one_hour_notification = true
