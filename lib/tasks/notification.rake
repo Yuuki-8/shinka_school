@@ -20,8 +20,7 @@ namespace :notification do
   desc "イベントの締め切り時刻3時間前に通知"
   task event_before_to_slack: :environment do
     puts "notification:event_before_to_slack... start"
-    events = Event.where("deadline_date = ?", 3.hours.since)
-    byebug
+    events = Event.where("deadline_date = ?", Time.zone.now.since(3.hours))
     puts "対象件数：#{events.count}件"
     if events.present?
 	    events.map do |event|
