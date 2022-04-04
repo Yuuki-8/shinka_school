@@ -48,5 +48,6 @@ Rails.application.routes.draw do
   resources :events do
     post :join_to_event, on: :member
     delete :cancel_to_event, on: :member
+    get :search,on: :collection
   end
 end
