@@ -63,6 +63,13 @@ class ClubsController < ApplicationController
     redirect_to controller: :clubs, action: :index
   end
 
+  def search
+    @clubs = Club.where("name LIKE(?)", "%#{params[:name]}%")
+    respond_to do |format|
+      format.json { render json: @clubs }
+    end
+  end
+
   private
     def club_params
       params.require(:club).permit(:name,:description,:image)
