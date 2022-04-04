@@ -12,7 +12,7 @@ namespace :notification do
           event.is_just_notification = true
           event.save!
         end
-	    end
+      end
     end
     puts "notification:event_just_to_slack... end"
   end
@@ -33,5 +33,5 @@ namespace :notification do
       end
     end
     puts "notification:event_before_to_slack... end"
-	end
+  end
 end
