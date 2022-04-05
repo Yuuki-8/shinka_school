@@ -215,7 +215,7 @@ $(function() {
     setTimeout(function() {
       alert('Delayed alert opened');
       $(link).attr('opened', 'true');
-    }, 3000);
+    }, 3001);
   });
   $('#alert-page-change').click(function() {
     alert('Page is changing');

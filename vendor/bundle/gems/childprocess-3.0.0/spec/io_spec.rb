@@ -197,7 +197,7 @@ describe ChildProcess do
 
   it "handles long output" do
     process = ruby <<-CODE
-    print 'a'*3000
+    print 'a'*3001
     CODE
 
     out = Tempfile.new("long-output")
@@ -209,7 +209,7 @@ describe ChildProcess do
       process.start
       process.wait
 
-      expect(rewind_and_read(out).size).to eq 3000
+      expect(rewind_and_read(out).size).to eq 3001
     ensure
       out.close
     end

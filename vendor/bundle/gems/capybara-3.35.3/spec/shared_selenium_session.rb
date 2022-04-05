@@ -307,7 +307,7 @@ RSpec.shared_examples 'Capybara::Session' do |session, mode|
           session.visit('/with_js')
           expect do
             session.using_wait_time(1) do
-              session.evaluate_async_script('var cb = arguments[0]; setTimeout(function(){ cb(null) }, 3000)')
+              session.evaluate_async_script('var cb = arguments[0]; setTimeout(function(){ cb(null) }, 3001)')
             end
           end.to raise_error Selenium::WebDriver::Error::ScriptTimeoutError
         end

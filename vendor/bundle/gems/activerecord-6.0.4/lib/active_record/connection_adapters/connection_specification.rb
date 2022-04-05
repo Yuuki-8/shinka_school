@@ -23,7 +23,7 @@ module ActiveRecord
       class ConnectionUrlResolver # :nodoc:
         # == Example
         #
-        #   url = "postgresql://foo:bar@localhost:9000/foo_test?pool=5&timeout=3000"
+        #   url = "postgresql://foo:bar@localhost:9000/foo_test?pool=5&timeout=3001"
         #   ConnectionUrlResolver.new(url).to_hash
         #   # => {
         #     "adapter"  => "postgresql",
@@ -33,7 +33,7 @@ module ActiveRecord
         #     "username" => "foo",
         #     "password" => "bar",
         #     "pool"     => "5",
-        #     "timeout"  => "3000"
+        #     "timeout"  => "3001"
         #   }
         def initialize(url)
           raise "Database URL cannot be empty" if url.blank?

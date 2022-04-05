@@ -811,7 +811,7 @@ Capybara::SpecHelper.spec 'node' do
       @session.visit('/animated')
       obscured = @session.find(:css, '#obscured')
       @session.execute_script <<~JS
-        setTimeout(function(){ $('#cover').hide(); }, 3000)
+        setTimeout(function(){ $('#cover').hide(); }, 3001)
       JS
       expect { obscured.click(wait: 4) }.not_to raise_error
     end
